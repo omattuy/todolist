@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SingleTaskModalComponent } from './single-task-modal.component';
+import { ShowOptionsComponent } from './show-options.component';
 
-describe('SingleTaskModalComponent', () => {
-  let component: SingleTaskModalComponent;
-  let fixture: ComponentFixture<SingleTaskModalComponent>;
+describe('ShowOptionsComponent', () => {
+  let component: ShowOptionsComponent;
+  let fixture: ComponentFixture<ShowOptionsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SingleTaskModalComponent ],
+      declarations: [ ShowOptionsComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SingleTaskModalComponent);
+    fixture = TestBed.createComponent(ShowOptionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -1,0 +1,34 @@
+<div class="container">
+
+  <ion-item>
+    <ion-label position="stacked">Title *</ion-label>
+    <ion-input [(ngModel)]="title" required='true'></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Description * (max 800 words)</ion-label>
+    <ion-textarea [(ngModel)]="description" placeholder="" required='true' maxlength='800'></ion-textarea>
+  </ion-item>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Priority *</ion-label>
+      <ion-select [(ngModel)]="priority">
+        <ion-select-option *ngFor="let priority of priorities" [value]="priority"><span>{{ priority }}</span></ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Status *</ion-label>
+      <ion-select [(ngModel)]="status">
+        <ion-select-option *ngFor="let status of types_status" [value]="status"><span>{{ status }}</span></ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  
+  <ion-button color="light" (click)="editTask()">
+    Save
+  </ion-button>
+
+</div>

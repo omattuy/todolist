@@ -5,8 +5,7 @@ import { ModalController } from '@ionic/angular';
 import { PopoverController } from '@ionic/angular';
 import { DataTransferService } from '../../services/DataTransferService';
 import { Task } from '../../models/task';
-import { SingleTaskModalComponent } from './single-task-modal/single-task-modal.component';
-import { StatusComponent } from './status/status.component';
+import { ShowOptionsComponent } from './show-options/show-options.component';
 
 @Component({
   selector: 'app-list-tasks',
@@ -139,60 +138,9 @@ export class ListTasksPage implements OnInit {
     ev.detail.complete();
   }
 
-  /* changeTaskStatus(id) {
-    this.ev.changeTaskStatus(id);
-  } */
-
-  /* async openTask(id) {
-    for (let i = 0; i < this.tasks.length; i++) {
-      if (id == this.tasks[i].id) {
-        this.title = this.tasks[i].title;
-        this.priority = this.tasks[i].priority;
-        this.description = this.tasks[i].description;
-        this.completed = this.tasks[i].completed;
-      }
-    }
-    const modal = await this.modalController.create({
-      component: SingleTaskModalComponent,
-      componentProps: {
-        title: this.title,
-        priority: this.priority,
-        description: this.description,
-        completed: this.completed,
-        status: 'Done'
-      },
-      cssClass: 'task_modal'
-    });
-    return await modal.present();
-  } */
-
-  /* deleteTask(id) {
-    this.ev.deleteTask(id);
-  } */
-
-  /* async deleteTaskAlert(id) {
-    const alert = await this.alertCtrl.create({
-      header: 'Delete task',
-      message: 'Are you sure you want to delete this task?',
-      buttons: [
-        {
-          text: 'No',
-          role: 'no',
-          cssClass: 'secondary'
-        }, {
-          text: 'Yes',
-          handler: () => {
-            this.deleteTask(id);
-          }
-        }
-      ]
-    });
-    await alert.present();
-  } */
-
   async showOptions(ev: any, id) {
     const popover = await this.popoverController.create({
-      component: StatusComponent,
+      component: ShowOptionsComponent,
       event: ev,
       translucent: true,
       componentProps: {
@@ -203,7 +151,7 @@ export class ListTasksPage implements OnInit {
     return await popover.present();
   }
 
-  closePopOver() {
+  closePopOver() { // FIXME: Not working yet
     let open_icon = document.getElementById("open_icon");
     let edit_icon = document.getElementById("edit_icon");
     let delete_icon = document.getElementById("delete_icon");

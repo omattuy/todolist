@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ListTasksPageRoutingModule } from './list-tasks-routing.module';
 import { ListTasksPage } from './list-tasks.page';
-import { SingleTaskComponent } from './single-task/single-task.component';
 
 @NgModule({
   imports: [
@@ -13,6 +12,6 @@ import { SingleTaskComponent } from './single-task/single-task.component';
     IonicModule,
     ListTasksPageRoutingModule
   ],
-  declarations: [ListTasksPage, SingleTaskComponent]
+  declarations: [ListTasksPage]
 })
 export class ListTasksPageModule {}

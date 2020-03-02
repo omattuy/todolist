@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-single-task-modal',
-  templateUrl: './single-task-modal.component.html',
-  styleUrls: ['./single-task-modal.component.scss'],
+  selector: 'app-open-task',
+  templateUrl: './open-task.component.html',
+  styleUrls: ['./open-task.component.scss'],
 })
-export class SingleTaskModalComponent implements OnInit {
+export class OpenTaskComponent implements OnInit {
 
   constructor(public modalController: ModalController) { }
 

@@ -3,16 +3,15 @@ import { ModalController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { DataTransferService } from '../../../services/DataTransferService';
 import { Task } from '../../../models/task';
-import { SingleTaskModalComponent } from '../single-task-modal/single-task-modal.component';
-
+import { OpenTaskComponent } from '../open-task/open-task.component';
+import { EditTaskComponent } from '../edit-task/edit-task.component';
 
 @Component({
-  selector: 'app-status',
-  templateUrl: './status.component.html',
-  styleUrls: ['./status.component.scss'],
+  selector: 'app-show-options',
+  templateUrl: './show-options.component.html',
+  styleUrls: ['./show-options.component.scss'],
 })
-
-export class StatusComponent implements OnInit {
+export class ShowOptionsComponent implements OnInit {
 
   tasks: Task[] = [];
   id: string;
@@ -43,13 +42,24 @@ export class StatusComponent implements OnInit {
       }
     }
     const modal = await this.modalController.create({
-      component: SingleTaskModalComponent,
+      component: OpenTaskComponent,
       componentProps: {
         title: this.title,
         priority: this.priority,
         description: this.description,
         status: this.status,
         completed: this.completed
+      },
+      cssClass: 'task_modal'
+    });
+    return await modal.present();
+  }
+
+  async editTask(id) {
+    const modal = await this.modalController.create({
+      component: EditTaskComponent,
+      componentProps: {
+        id: id
       },
       cssClass: 'task_modal'
     });
