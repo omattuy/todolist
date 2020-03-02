@@ -1,0 +1,100 @@
+.container {
+    margin: auto;
+    position: absolute;
+    top: 70px; left: 0; bottom: 0; right: 0;
+    text-align: center;
+    .container-list {
+        height:calc(100% - 45px);
+        overflow:auto;
+    }
+}
+
+span {
+    color: black;
+}
+
+ion-item {
+    position: relative;
+    border-bottom: 1px solid darkgray;
+}
+
+.reordering_icon {
+    color: black;
+}
+
+.completed_task {
+    text-decoration: line-through;
+}
+
+/* .open_icon {
+    position: absolute;
+    left: 70%;
+    float: right;
+    color: gray;
+    font-size: 1.2em;
+}
+
+.open_icon:hover {
+    color: black;
+}
+
+.edit_icon {
+    position: absolute;
+    left: 75%;
+    float: right;
+    color: gray;
+    font-size: 1.2em;
+}
+
+.edit_icon:hover {
+    color: black;
+}
+
+.task_status_icon {
+    position: absolute;
+    left: 80%;
+    float: right;
+    color: gray;
+    font-size: 1.2em;
+}
+
+.task_status_icon:hover {
+    color: black;
+}
+
+.trash_icon {
+    position: absolute;
+    left: 90%;
+    float: right;
+    color: gray;
+    font-size: 1.2em;
+}
+
+.trash_icon:hover {
+    color: black;
+} */
+
+.options_icon {
+    position: absolute;
+    left: 90%;
+    float: right;
+    color: gray;
+    font-size: 1.2em;
+}
+
+.options_icon:hover {
+    color: black;
+}
+
+
+
+/* NO TASKS */
+
+.noTasks {
+    margin-top: 70px;
+}
+
+#empty_list {
+    width: 100px;
+    height: 100px;
+}

@@ -1,0 +1,43 @@
+.container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.open_icon {
+    margin: auto;
+    margin-bottom: 10px;
+    display: block;
+    color: gray;
+    font-size: 1.2em;
+}
+
+.open_icon:hover {
+    color: black;
+}
+
+.edit_icon {
+    margin: auto;
+    margin-bottom: 10px;
+    display: block;
+    color: gray;
+    font-size: 1.2em;
+}
+
+.edit_icon:hover {
+    color: black;
+}
+
+.delete_icon {
+    margin: auto;
+    display: block;
+    color: gray;
+    font-size: 1.2em;
+}
+
+.delete_icon:hover {
+    color: black;
+}

@@ -1,0 +1,44 @@
+<ion-card [color]="priority == 'High' ? 'danger' : priority == 'Medium' ? 'warning' : 'secondary'">
+  <ion-card-header>
+    <ion-card-title>Task - {{ description }}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ul>
+      <!-- <li> Description: {{ description }} </li> -->
+      <li *ngIf="comment != undefined"> Comment: {{ comment }} </li>
+      <li *ngIf="comment == undefined"> Comment: N/A </li>
+      <li> Priority: {{ priority }} </li>
+      <li *ngIf="completed == true"> Status: Done </li>
+      <li *ngIf="completed == false"> Status: Not done </li>
+    </ul>
+  </ion-card-content>
+  <!-- <ion-icon name="pencil-outline"></ion-icon> -->
+</ion-card>
+
+<!--
+<div class="container">
+
+  <ion-item>
+    <ion-label position="stacked">New description *</ion-label>
+    <ion-input [(ngModel)]="new_description" required='true'></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">New comments</ion-label>
+    <ion-input [(ngModel)]="new_comment" required='false'></ion-input>
+  </ion-item>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">New priority *</ion-label>
+      <ion-select (ionChange)="onChange($event)">
+        <ion-select-option *ngFor="let p of priority_types"><span>{{ p }}</span></ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-button color="light" (click)="editSingleTask()">
+    Save
+  </ion-button>
+
+</div> -->

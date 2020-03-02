@@ -1,0 +1,30 @@
+<div class="container">
+
+  <ion-router-outlet></ion-router-outlet>
+
+  <div class="container-list" *ngIf="tasks.length > 0">
+      <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
+        <ion-item *ngFor="let task of tasks"
+                  [color]="task.priority == 'High' ? 'danger' : task.priority == 'Medium' ? 'warning' : 'secondary'"
+                  lines="none">
+          <ion-reorder class="reordering_icon" slot="start"></ion-reorder>
+          <span>{{ task.title }}</span>
+          <!-- 
+          <span *ngIf="task.completed == true" class="completed_task">{{ task.title }}</span>
+          <span *ngIf="task.completed == false">{{ task.title }}</span>
+          <ion-icon (click)="openTask(task.id)" class="open_icon" name="open-outline"></ion-icon>
+          <ion-icon (click)="editTask(task.id)" class="edit_icon" name="pencil-outline"></ion-icon>
+          <ion-icon (click)="presentPopover($event)" name="checkbox" class="task_status_icon"></ion-icon>
+          <ion-icon (click)="deleteTaskAlert(task.id)" class="trash_icon" name="trash-outline"></ion-icon>
+          -->
+          <ion-icon (click)="showOptions($event, task.id)" class="options_icon" name="ellipsis-vertical"></ion-icon>
+        </ion-item>
+      </ion-reorder-group>
+  </div>
+
+  <div *ngIf="tasks.length == 0" class="noTasks">
+    <p><strong>Your task box is empty.</strong></p>
+    <img id="empty_list" src="../../assets/empty-list.svg"/>
+  </div>
+
+</div>

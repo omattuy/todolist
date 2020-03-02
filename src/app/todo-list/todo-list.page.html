@@ -1,0 +1,22 @@
+<ion-app>
+
+    <ion-header>
+      <ion-title>
+        <img id="logo" src="../assets/logo.svg"/>
+        <div class="title">TODO LIST</div>
+      </ion-title>
+    </ion-header>
+
+    <ion-content>
+      <ion-router-outlet></ion-router-outlet>
+    </ion-content>
+
+    <ion-footer>
+      <div class="wrapper">
+        <ion-icon id="lt" [routerLink]="['/todo-list/']" name="list"></ion-icon>
+        <ion-badge *ngIf="tasks.length > 0"> {{ tasks.length }}</ion-badge>
+      </div>
+      <ion-icon id="ct" [routerLink]="['/todo-list/create-task']" name="add-circle"></ion-icon>
+    </ion-footer>
+ 
+</ion-app>

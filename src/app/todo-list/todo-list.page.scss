@@ -1,0 +1,100 @@
+.container {
+    text-align: center;
+    color: black;
+}
+
+ion-header {
+    height: 10%;
+    background-color: #512b58;
+    color: white;
+    font-weight: bold;
+}
+
+ion-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#logo {
+    position: absolute;
+    bottom: 15%;
+    width: 35%;
+    height: 35%;
+    left: -2%;
+}
+
+.title {
+    position: absolute;
+    bottom: 15%;
+    right: 18%;
+    font-size: medium;
+}
+
+ion-back-button {
+    color: #512b58;
+}
+
+ion-footer {
+    position: relative;
+    text-align: center;
+    padding-top: 10px;
+    height: 9%;
+    display: flex;
+}
+
+.wrapper {
+    display:inline-block;
+    margin: auto;
+}
+
+#lt {
+    color: #512b58;
+    font-size: 2em;
+    margin: auto;
+}
+
+#ct {
+    color: #512b58;
+    font-size: 2em;
+    margin: auto;
+}
+
+ion-badge {
+    height: 0.8rem;
+    width: 0.8rem;
+    font-size: 8px;
+    background-color: #512b58;
+    color: white;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* unvisited link */
+a:link {
+    color: #6F5F5E;
+}
+
+/* visited link */
+a:visited {
+    color: #6F5F5E;
+}
+
+/* mouse over link */
+a:hover {
+    color: #6F5F5E;
+}
+
+/* selected link */
+a:active {
+    color: #6F5F5E;
+}
+
+ion-toolbar {
+    text-align: center;
+}
