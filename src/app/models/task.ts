@@ -3,9 +3,8 @@ export class Task {
     title: string;
     priority: string;
     description?: string;
-    completed: boolean;
     status: string;
     constructor () {
-        this.status = 'Not working';
+        this.status = 'Not started';
     }
 }

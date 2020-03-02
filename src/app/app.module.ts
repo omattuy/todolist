@@ -13,12 +13,13 @@ import { TodoListPage } from './todo-list/todo-list.page';
 import { TodoListPageModule } from './todo-list/todo-list.module';
 import { DataTransferService } from './services/DataTransferService';
 import { PageNotFoundPage } from './page-not-found/page-not-found.page';
-import { SingleTaskModalComponent } from './todo-list/list-tasks/single-task-modal/single-task-modal.component';
-import { StatusComponent } from './todo-list/list-tasks/status/status.component';
+import { OpenTaskComponent } from './todo-list/list-tasks/open-task/open-task.component';
+import { ShowOptionsComponent } from './todo-list/list-tasks/show-options/show-options.component';
+import { EditTaskComponent } from './todo-list/list-tasks/edit-task/edit-task.component';
 
 @NgModule ({
-  declarations: [AppComponent, TodoListPage, PageNotFoundPage, SingleTaskModalComponent, StatusComponent],
-  entryComponents: [SingleTaskModalComponent, StatusComponent],
+  declarations: [AppComponent, TodoListPage, PageNotFoundPage, OpenTaskComponent, ShowOptionsComponent, EditTaskComponent],
+  entryComponents: [OpenTaskComponent, ShowOptionsComponent, EditTaskComponent],
   imports: [BrowserModule, IonicModule.forRoot(), FormsModule, TodoListPageModule, AppRoutingModule],
   providers: [
     StatusBar,

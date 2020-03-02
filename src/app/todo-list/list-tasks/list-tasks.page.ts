@@ -20,7 +20,6 @@ export class ListTasksPage implements OnInit {
   title: string;
   description: string;
   priority: string;
-  completed: boolean;
 
   constructor(private ev: DataTransferService,
               private router: Router,

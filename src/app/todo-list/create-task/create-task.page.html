@@ -15,9 +15,6 @@
         <ion-label position="stacked">Priority *</ion-label>
         <ion-select (ionChange)="onChange($event)">
           <ion-select-option *ngFor="let p of priority"><span>{{ p }}</span></ion-select-option>
-          <!-- <ion-select-option value="High">High</ion-select-option>
-          <ion-select-option value="Medium">Medium</ion-select-option>
-          <ion-select-option value="Low">Low</ion-select-option> -->
         </ion-select>
       </ion-item>
     </ion-list>

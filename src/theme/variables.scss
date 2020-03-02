@@ -15,18 +15,18 @@
 
   .task_modal .modal-wrapper {
     --border-radius: 10px;
-    height: 55%;
+    height: 80%;
     width: 93%;
-    top: 20%;
-    position: absolute; 
-    display: block;  
+    top: 15%;
+    position: absolute;
+    display: block;
  }
 
  .pop-over-style .popover-content {
     padding-left: 0 !important;
     padding-right: 0 !important;
-    --max-width: 10% !important;
-    --min-width: 8% !important;
+    --max-width: 30px !important;
+    --min-width: 30px !important;
   }
 
  --ion-text-color: black;

@@ -1,9 +1,65 @@
 .container {
     position: absolute;
-    height: 90%;
+    height: 95%;
     width: 90%;
-    top: 5%;
-    bottom: 5%;
+    top: 2.5%;
+    bottom: 2.5%;
     left: 5%;
     right: 5%;
+}
+
+.title_container {
+    height: 22%;
+}
+
+.title_item {
+    position: absolute;
+    left: 0;
+}
+
+.title_checkbox {
+    position: absolute;
+    right: 0;
+}
+
+.description_container {
+    height: 22%;
+}
+
+.description_item {
+    position: absolute;
+    left: 0;
+}
+
+.description_checkbox {
+    position: absolute;
+    right: 0;
+}
+
+.priority_container {
+    height: 22%;
+}
+
+.priority_item {
+    position: absolute;
+    left: 0;
+}
+
+.priority_checkbox {
+    position: absolute;
+    right: 0;
+}
+
+.status_container {
+    height: 22%;
+}
+
+.status_item {
+    position: absolute;
+    left: 0;
+}
+
+.status_checkbox {
+    position: absolute;
+    right: 0;
 }

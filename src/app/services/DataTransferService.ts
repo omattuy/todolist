@@ -6,7 +6,6 @@ export class DataTransferService {
 
   task: Task;
   tasks: Task[] = [];
-  counter:number = 0;
 
   constructor() {}
 
@@ -18,10 +17,13 @@ export class DataTransferService {
     return this.tasks;
   }
 
-  public changeTaskStatus(id: string): void {
+  public editTask(id, title, description, priority, status): void {
     for (let i = 0; i < this.tasks.length; i++) {
       if (id == this.tasks[i].id) {
-        this.tasks[i].completed = !this.tasks[i].completed;
+        this.tasks[i].title = title;
+        this.tasks[i].description = description;
+        this.tasks[i].priority = priority;
+        this.tasks[i].status = status;
       }
     }
   }

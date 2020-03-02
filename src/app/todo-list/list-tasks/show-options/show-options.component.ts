@@ -19,7 +19,6 @@ export class ShowOptionsComponent implements OnInit {
   description: string;
   priority: string;
   status: string;
-  completed: boolean;
 
   constructor(private ev: DataTransferService,
               private alertCtrl: AlertController,
@@ -38,7 +37,6 @@ export class ShowOptionsComponent implements OnInit {
         this.priority = this.tasks[i].priority;
         this.description = this.tasks[i].description;
         this.status = this.tasks[i].status;
-        this.completed = this.tasks[i].completed;
       }
     }
     const modal = await this.modalController.create({
@@ -47,8 +45,7 @@ export class ShowOptionsComponent implements OnInit {
         title: this.title,
         priority: this.priority,
         description: this.description,
-        status: this.status,
-        completed: this.completed
+        status: this.status
       },
       cssClass: 'task_modal'
     });
