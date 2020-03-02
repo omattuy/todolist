@@ -204,9 +204,9 @@ export class ListTasksPage implements OnInit {
   }
 
   closePopOver() {
-    let open_icon = document.getElementById("open_icon").addEventListener("click");
-    let edit_icon = document.getElementById("edit_icon").addEventListener("click");
-    let delete_icon = document.getElementById("delete_icon").addEventListener("click");
+    let open_icon = document.getElementById("open_icon");
+    let edit_icon = document.getElementById("edit_icon");
+    let delete_icon = document.getElementById("delete_icon");
   }
 
 }
