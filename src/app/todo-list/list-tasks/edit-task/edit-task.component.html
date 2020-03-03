@@ -1,25 +1,25 @@
 <div class="container">
-
+  <span class="question">What would you like to edit?</span>
   <div class="title_container">
-    <ion-item *ngIf="edit_title == true" class="title_item">
+    <ion-item *ngIf="edited_title == true" class="title_item">
       <ion-label position="stacked">Title *</ion-label>
-      <ion-input [(ngModel)]="title" required='true'></ion-input>
+      <ion-input [(ngModel)]="title"></ion-input>
     </ion-item>
-    <span *ngIf="edit_title == false" class="title_span">Title</span>
+    <span *ngIf="edited_title == false" class="title_span">Title</span>
     <ion-checkbox class="title_checkbox" (click)="editTitle()" slot="end"></ion-checkbox>
   </div>
 
   <div class="description_container">
-    <ion-item *ngIf="edit_description == true" class="description_item">
+    <ion-item *ngIf="edited_description == true" class="description_item">
       <ion-label position="stacked">Description * (max 800 words)</ion-label>
-      <ion-textarea [(ngModel)]="description" placeholder="" required='true' maxlength='800'></ion-textarea>
+      <ion-textarea [(ngModel)]="description" placeholder="" maxlength='800'></ion-textarea>
     </ion-item>
-    <span *ngIf="edit_description == false" class="description_span">Description</span>
+    <span *ngIf="edited_description == false" class="description_span">Description</span>
     <ion-checkbox class="description_checkbox" (click)="editDescription()" slot="end"></ion-checkbox>
   </div>
 
   <div class="priority_container">
-    <ion-list *ngIf="edit_priority == true" class="priority_item">
+    <ion-list *ngIf="edited_priority == true" class="priority_item">
       <ion-item>
         <ion-label position="stacked">Priority *</ion-label>
         <ion-select [(ngModel)]="priority">
@@ -27,12 +27,12 @@
         </ion-select>
       </ion-item>
     </ion-list>
-    <span *ngIf="edit_priority == false" class="priority_span">Priority</span>
+    <span *ngIf="edited_priority == false" class="priority_span">Priority</span>
     <ion-checkbox class="priority_checkbox" (click)="editPriority()" slot="end"></ion-checkbox>
   </div>
 
   <div class="status_container"> 
-    <ion-list *ngIf="edit_status == true" class="status_item">
+    <ion-list *ngIf="edited_status == true" class="status_item">
       <ion-item>
         <ion-label position="stacked">Status *</ion-label>
         <ion-select [(ngModel)]="status">
@@ -40,7 +40,7 @@
         </ion-select>
       </ion-item>
     </ion-list>
-    <span *ngIf="edit_status == false" class="status_span">Status</span>
+    <span *ngIf="edited_status == false" class="status_span">Status</span>
     <ion-checkbox class="status_checkbox" (click)="editStatus()" slot="end"></ion-checkbox>
   </div>
   

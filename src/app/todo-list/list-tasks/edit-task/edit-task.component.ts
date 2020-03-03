@@ -11,41 +11,41 @@ export class EditTaskComponent implements OnInit {
 
   tasks: Task[] = [];
   id: string;
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   priorities = ['High', 'Medium', 'Low'];
-  priority: string;
+  priority?: string;
   types_status = ['Not started', 'In progress', 'Completed'];
-  status: string;
+  status?: string;
 
-  edit_title: boolean;
-  edit_description: boolean;
-  edit_priority: boolean;
-  edit_status: boolean;
+  edited_title: boolean;
+  edited_description: boolean;
+  edited_priority: boolean;
+  edited_status: boolean;
 
   constructor(private ev: DataTransferService) {
-    this.edit_title = false;
-    this.edit_description = false;
-    this.edit_priority = false;
-    this.edit_status = false;
-  }
+    this.edited_title = false;
+    this.edited_description = false;
+    this.edited_priority = false;
+    this.edited_status = false;
+ }
 
   ngOnInit() {}
 
   editTitle() {
-    this.edit_title = !this.edit_title;
+    this.edited_title = !this.edited_title;
   }
 
   editDescription() {
-    this.edit_description = !this.edit_description;
+    this.edited_description = !this.edited_description;
   }
 
   editPriority() {
-    this.edit_priority = !this.edit_priority;
+    this.edited_priority = !this.edited_priority;
   }
 
   editStatus() {
-    this.edit_status = !this.edit_status;
+    this.edited_status = !this.edited_status;
   }
 
   editTask () {
