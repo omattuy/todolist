@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { DataTransferService } from '../../../services/DataTransferService';
 import { Task } from '../../../models/task';
 
@@ -23,7 +25,9 @@ export class EditTaskComponent implements OnInit {
   edited_priority: boolean;
   edited_status: boolean;
 
-  constructor(private ev: DataTransferService) {
+  constructor(private ev: DataTransferService,
+              public toastController: ToastController,
+              public modalController: ModalController) {
     this.edited_title = false;
     this.edited_description = false;
     this.edited_priority = false;
@@ -48,8 +52,32 @@ export class EditTaskComponent implements OnInit {
     this.edited_status = !this.edited_status;
   }
 
+  closeModal() {
+    this.modalController.dismiss({
+      'dismissed': true
+    });
+  }
+
+  async alertMessage(message) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 1500,
+      position: 'middle'
+    });
+    toast.present();
+  }
+
   editTask () {
-    this.ev.editTask(this.id, this.title, this.description, this.priority, this.status);
+    if (((this.edited_title == true) && (this.title == undefined)) ||
+        ((this.edited_description == true) && (this.description == undefined)) ||
+        ((this.edited_priority == true) && (this.priority == undefined)) ||
+        ((this.edited_status == true) && (this.status == undefined))) {
+      this.alertMessage('Please finish editing the chosen task(s).');
+    } else {
+      this.alertMessage('The task has been edited!');
+      this.ev.editTask(this.id, this.title, this.description, this.priority, this.status);
+      this.closeModal();
+    }
   }
 
 }

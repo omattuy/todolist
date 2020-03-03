@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { AlertController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { PopoverController } from '@ionic/angular';
 import { DataTransferService } from '../../services/DataTransferService';
@@ -23,7 +22,6 @@ export class ListTasksPage implements OnInit {
 
   constructor(private ev: DataTransferService,
               private router: Router,
-              private alertCtrl: AlertController,
               public modalController: ModalController,
               public popoverController: PopoverController) {
     this.loadTaskLists();

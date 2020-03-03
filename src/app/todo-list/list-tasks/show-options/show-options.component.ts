@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { PopoverController } from '@ionic/angular';
 import { DataTransferService } from '../../../services/DataTransferService';
 import { Task } from '../../../models/task';
 import { OpenTaskComponent } from '../open-task/open-task.component';
@@ -22,7 +23,8 @@ export class ShowOptionsComponent implements OnInit {
 
   constructor(private ev: DataTransferService,
               private alertCtrl: AlertController,
-              public modalController: ModalController) { }
+              public modalController: ModalController,
+              public popoverController: PopoverController) { }
 
   ngOnInit() {}
 
@@ -30,7 +32,17 @@ export class ShowOptionsComponent implements OnInit {
     this.tasks = this.ev.getTasks();
   }
 
-  async openTask(id) {
+  async dismissPopOver() {
+    await this.popoverController.dismiss();
+  }
+
+  openTask(id) {
+    let task_id = id;
+    this.openModal(task_id);
+    this.dismissPopOver();
+  }
+
+  async openModal(id) {
     for (let i = 0; i < this.tasks.length; i++) {
       if (id == this.tasks[i].id) {
         this.title = this.tasks[i].title;
@@ -52,7 +64,14 @@ export class ShowOptionsComponent implements OnInit {
     return await modal.present();
   }
 
-  async editTask(id) {
+
+  editTask(id) {
+    let task_id = id;
+    this.editModal(task_id);
+    this.dismissPopOver();
+  }
+
+  async editModal(id) {
     const modal = await this.modalController.create({
       component: EditTaskComponent,
       componentProps: {
@@ -85,6 +104,7 @@ export class ShowOptionsComponent implements OnInit {
       ]
     });
     await alert.present();
+    this.dismissPopOver();
   }
 
 }

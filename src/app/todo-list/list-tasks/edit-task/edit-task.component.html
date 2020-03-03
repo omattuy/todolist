@@ -1,5 +1,9 @@
 <div class="container">
+
   <span class="question">What would you like to edit?</span>
+
+  <ion-icon id="close_task" name="close-circle" (click)="closeModal()"></ion-icon>
+
   <div class="title_container">
     <ion-item *ngIf="edited_title == true" class="title_item">
       <ion-label position="stacked">Title *</ion-label>

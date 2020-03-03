@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 import { DataTransferService } from '../../services/DataTransferService';
 import { Task } from '../../models/task';
-import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-create-task',
