@@ -51,23 +51,44 @@ ion-footer {
     margin: auto;
 }
 
-#lt {
-    color: #512b58;
+.list_tasks_not_active {
+    color: #b189b8;
     font-size: 2em;
     margin: auto;
 }
 
-#ct {
+.list_tasks_active {
+   color: #512b58;
+   font-size: 2em;
+   margin: auto;
+}
+
+.create_task_active {
     color: #512b58;
+    font-size: 2em;
+    margin: auto;
+ }
+
+ .create_task_not_active {
+    color: #b189b8;
     font-size: 2em;
     margin: auto;
 }
 
-ion-badge {
+.number_tasks_active {
     height: 0.8rem;
     width: 0.8rem;
     font-size: 8px;
     background-color: #512b58;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.number_tasks_not_active {
+    height: 0.8rem;
+    width: 0.8rem;
+    font-size: 8px;
+    background-color: #b189b8;
     color: white;
     margin-bottom: 20px;
 }

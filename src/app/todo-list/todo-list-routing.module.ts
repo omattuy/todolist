@@ -4,16 +4,20 @@ import { TodoListPage } from './todo-list.page';
 import { CreateTaskPage } from './create-task/create-task.page';
 import { ListTasksPage } from './list-tasks/list-tasks.page';
 
-// FOOTER ROUTES
 const routes: Routes = [
   {
     path: 'todo-list',
     component: TodoListPage,
     children: [
-      { path: '', component: ListTasksPage }, // url: todo-list/
+      { path: '', component: ListTasksPage },
       { path: 'create-task', component: CreateTaskPage }
     ]
+  },
+  {
+    path: 'header-options',
+    loadChildren: () => import('./header-options/header-options.module').then( m => m.HeaderOptionsPageModule)
   }
+
 ];
 
 @NgModule({
