@@ -1,18 +1,6 @@
 <div id="container">
 
-  <ion-header *ngIf="priority == 'High'" class="high">
-    <div class="task_title">
-      {{ title }}
-    </div>
-  </ion-header>
-
-  <ion-header *ngIf="priority == 'Medium'" class="medium">
-    <div class="task_title">
-      {{ title }}
-    </div>
-  </ion-header>
-
-  <ion-header *ngIf="priority == 'Low'" class="low">
+  <ion-header class="header_title">
     <div class="task_title">
       {{ title }}
     </div>
@@ -21,7 +9,6 @@
   <ion-icon id="close_task" name="close-circle" (click)="closeTask()"></ion-icon>
 
   <div id="content">
-    <!-- <span>Description:</span> -->
     <div class="description">
       {{ description }}
     </div>
@@ -29,7 +16,6 @@
 
   <div class="wrapper">
     <div class="status"> Status: <strong>{{ status }}</strong> </div>
-    <div class="priority"> Priority: <strong> {{ priority }} </strong> </div>
   </div>
 
 </div>

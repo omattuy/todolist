@@ -4,7 +4,7 @@ import { AlertController } from '@ionic/angular';
 import { PopoverController } from '@ionic/angular';
 import { DataTransferService } from '../../../services/DataTransferService';
 import { Task } from '../../../models/task';
-import { OpenTaskComponent } from '../open-task/open-task.component';
+//import { OpenTaskComponent } from '../open-task/open-task.component';
 import { EditTaskComponent } from '../edit-task/edit-task.component';
 
 @Component({
@@ -36,7 +36,7 @@ export class ShowOptionsComponent implements OnInit {
     await this.popoverController.dismiss();
   }
 
-  openTask(id) {
+  /* openTask(id) {
     let task_id = id;
     this.openModal(task_id);
     this.dismissPopOver();
@@ -62,7 +62,7 @@ export class ShowOptionsComponent implements OnInit {
       cssClass: 'task_modal'
     });
     return await modal.present();
-  }
+  } */
 
 
   editTask(id) {

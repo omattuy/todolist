@@ -5,6 +5,7 @@ import { PopoverController } from '@ionic/angular';
 import { DataTransferService } from '../../services/DataTransferService';
 import { Task } from '../../models/task';
 import { ShowOptionsComponent } from './show-options/show-options.component';
+import { OpenTaskComponent } from '../list-tasks/open-task/open-task.component';
 
 @Component({
   selector: 'app-list-tasks',
@@ -18,7 +19,7 @@ export class ListTasksPage implements OnInit {
   id: string;
   title: string;
   description: string;
-  priority: string;
+  status: string;
   task_idx:number;
   color_palette: Array<string> = [];
 
@@ -39,67 +40,98 @@ export class ListTasksPage implements OnInit {
   ngOnInit() { }
 
   loadTaskLists() {
+
     /* Comment / uncomment the code below for debugging purposes */
-      this.tasks = this.ev.getTasks();
+      //this.tasks = this.ev.getTasks();
     /* Comment / uncomment the code below for debugging purposes */
     
-    /* this.tasks = [
+    this.tasks = [
       {
         id: "task-0",
         priority: "Low",
         title: "primeira descrição",
         description: "primeiro comentário",
-        status: 'Done',
-        color: 'blue',
-        color_idx: 2
+        status: 'Done'
       },
       {
         id: "task-1",
         priority: "Medium",
         title: "segunda descrição",
         description: "segundo comentário",
-        status: 'Done',
-        color: 'blue',
-        color_idx: 2
+        status: 'Done'
       },
       {
         id: "task-4",
         priority: "Low",
         title: "terceira descrição",
         description: "terceiro comentário",
-        status: 'Done',
-        color: 'blue',
-        color_idx: 2
+        status: 'Done'
       },
       {
         id: "task-5",
         priority: "Low",
         title: "quarta descrição",
         description: "terceiro comentário",
-        status: 'Done',
-        color: 'blue',
-        color_idx: 2
+        status: 'Done'
       },
       {
         id: "task-6",
         priority: "Low",
         title: "quarta descrição",
         description: "terceiro comentário",
-        status: 'Done',
-        color: 'blue',
-        color_idx: 2
+        status: 'Done'
       },
       {
         id: "task-7",
         priority: "Low",
         title: "quarta descrição",
         description: "terceiro comentário",
-        status: 'Done',
-        color: 'blue',
-        color_idx: 2
+        status: 'Done'
+      },
+      {
+        id: "task-7",
+        priority: "Low",
+        title: "quarta descrição",
+        description: "terceiro comentário",
+        status: 'Done'
+      },
+      {
+        id: "task-7",
+        priority: "Low",
+        title: "quarta descrição",
+        description: "terceiro comentário",
+        status: 'Done'
+      },
+      {
+        id: "task-7",
+        priority: "Low",
+        title: "quarta descrição",
+        description: "terceiro comentário",
+        status: 'Done'
+      },
+      {
+        id: "task-7",
+        priority: "Low",
+        title: "quarta descrição",
+        description: "terceiro comentário",
+        status: 'Done'
+      },
+      {
+        id: "task-7",
+        priority: "Low",
+        title: "quarta descrição",
+        description: "terceiro comentário",
+        status: 'Done'
+      },
+      {
+        id: "task-7",
+        priority: "Low",
+        title: "quarta descrição",
+        description: "terceiro comentário",
+        status: 'Done'
       }
-    ] */
-   
+    ]
+
   }
 
   doReorder(ev: any) { /* Allows the list of tasks to be reordered */
@@ -109,14 +141,15 @@ export class ListTasksPage implements OnInit {
   setColorPalette() {
     for (let i = 0; i < this.tasks.length; i++) {
       if (i == 0) {
-        this.color_palette[0] = "rgb(87, 198, 218)";
+        this.color_palette[0] = "rgb(255,99,71)";
+        //this.color_palette[0] = "rgb(87, 198, 218)";
       } else {
         this.color_palette[i] = "rgb(" +
-                          (Number(this.color_palette[i-1].slice(this.color_palette[i-1].indexOf("(") + 1, this.color_palette[i-1].indexOf(","))) + 30).toString() +
+                          (Number(this.color_palette[i-1].slice(this.color_palette[i-1].indexOf("(") + 1, this.color_palette[i-1].indexOf(","))) + 35).toString() +
                           "," +
-                          (Number(this.color_palette[i-1].slice(this.color_palette[i-1].indexOf(",") + 1, this.color_palette[i-1].indexOf(",", this.color_palette[i-1].indexOf(",") + 1))) + 10).toString() +
+                          (Number(this.color_palette[i-1].slice(this.color_palette[i-1].indexOf(",") + 1, this.color_palette[i-1].indexOf(",", this.color_palette[i-1].indexOf(",") + 1))) + 22).toString() +
                           "," +
-                          (Number(this.color_palette[i-1].slice(this.color_palette[i-1].indexOf(",", this.color_palette[i-1].indexOf(",") + 1) + 1, this.color_palette[i-1].indexOf(")"))) + 10).toString() +
+                          (Number(this.color_palette[i-1].slice(this.color_palette[i-1].indexOf(",", this.color_palette[i-1].indexOf(",") + 1) + 1, this.color_palette[i-1].indexOf(")"))) + 22).toString() +
                           ")";
       }
     }
@@ -133,6 +166,31 @@ export class ListTasksPage implements OnInit {
       cssClass: 'pop-over-style'
     });
     return await popover.present();
+  }
+
+  openTask(id) {
+    let task_id = id;
+    this.openModal(task_id);
+  }
+
+  async openModal(id) {
+    for (let i = 0; i < this.tasks.length; i++) {
+      if (id == this.tasks[i].id) {
+        this.title = this.tasks[i].title;
+        this.description = this.tasks[i].description;
+        this.status = this.tasks[i].status;
+      }
+    }
+    const modal = await this.modalController.create({
+      component: OpenTaskComponent,
+      componentProps: {
+        title: this.title,
+        description: this.description,
+        status: this.status
+      },
+      cssClass: 'task_modal'
+    });
+    return await modal.present();
   }
 
 }
