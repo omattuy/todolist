@@ -11,15 +11,15 @@ import { Task } from '../../models/task';
 export class CreateTaskPage implements OnInit {
 
   task = new Task();
-  priority = ['High', 'Medium', 'Low'];
+  //priority = ['High', 'Medium', 'Low'];
 
-  constructor(private ev: DataTransferService, public toastController: ToastController) {}
+  constructor(private ev: DataTransferService, public toastController: ToastController) { }
 
   ngOnInit() {}
 
-  onChange(priority) {
+  /* onChange(priority) {
     this.task.priority = priority.detail.value;
-  }
+  } */
 
   createTask(): void {
       this.task.id = 'task-' + this.ev.getTasks().length.toString();
@@ -28,7 +28,7 @@ export class CreateTaskPage implements OnInit {
   }
 
   async createNewTask() {
-    if (this.task.title != undefined && this.task.description != undefined && this.task.priority != undefined) {
+    if (this.task.title != undefined && this.task.description != undefined /* && this.task.priority != undefined */) {
       this.createTask();
       const toast = await this.toastController.create({
         message: 'The task has been created!',

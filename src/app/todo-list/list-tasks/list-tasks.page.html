@@ -1,19 +1,12 @@
 <div class="container">
 
   <div class="container-list" *ngIf="tasks.length > 0">
-      <div class="header">
-        <div class="header_title">Title</div>
-        <div class="header_status">Status</div>
-      </div>
       <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
-        <ion-item *ngFor="let task of tasks"
-                  [color]="task.priority == 'High' ? 'danger' : task.priority == 'Medium' ? 'warning' : 'secondary'"
-                  lines="none">
+        <div *ngFor="let task of tasks; index as task_idx" [ngStyle]="{'background-color' : color_palette[task_idx]}" class="task" lines="none">
           <ion-reorder class="reordering_icon" slot="start"></ion-reorder>
-          <span [ngClass]="{'completed_task' : task.status == 'Completed', 'incompleted_task' : task.status != 'Completed'}">{{ task.title }}</span>
-          <span class="status">{{ task.status }}</span>
+          <span class="title" [ngClass]="{'completed_task' : task.status == 'Completed', 'incompleted_task' : task.status != 'Completed'}">{{ task.title }}</span>
           <ion-icon (click)="showOptions($event, task.id)" class="options_icon" name="ellipsis-vertical"></ion-icon>
-        </ion-item>
+        </div>
       </ion-reorder-group>
   </div>
 

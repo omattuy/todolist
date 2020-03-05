@@ -15,14 +15,14 @@ export class EditTaskComponent implements OnInit {
   id: string;
   title?: string;
   description?: string;
-  priorities = ['High', 'Medium', 'Low'];
-  priority?: string;
+  /* priorities = ['High', 'Medium', 'Low'];
+  priority?: string; */
   types_status = ['Not started', 'In progress', 'Completed'];
   status?: string;
 
   edited_title: boolean;
   edited_description: boolean;
-  edited_priority: boolean;
+  //edited_priority: boolean;
   edited_status: boolean;
 
   constructor(private ev: DataTransferService,
@@ -30,7 +30,7 @@ export class EditTaskComponent implements OnInit {
               public modalController: ModalController) {
     this.edited_title = false;
     this.edited_description = false;
-    this.edited_priority = false;
+    //this.edited_priority = false;
     this.edited_status = false;
  }
 
@@ -44,9 +44,9 @@ export class EditTaskComponent implements OnInit {
     this.edited_description = !this.edited_description;
   }
 
-  editPriority() {
+  /* editPriority() {
     this.edited_priority = !this.edited_priority;
-  }
+  } */
 
   editStatus() {
     this.edited_status = !this.edited_status;
@@ -70,12 +70,12 @@ export class EditTaskComponent implements OnInit {
   editTask () {
     if (((this.edited_title == true) && (this.title == undefined)) ||
         ((this.edited_description == true) && (this.description == undefined)) ||
-        ((this.edited_priority == true) && (this.priority == undefined)) ||
+        /* ((this.edited_priority == true) && (this.priority == undefined)) || */
         ((this.edited_status == true) && (this.status == undefined))) {
       this.alertMessage('Please finish editing the chosen task(s).');
     } else {
       this.alertMessage('The task has been edited!');
-      this.ev.editTask(this.id, this.title, this.description, this.priority, this.status);
+      this.ev.editTask(this.id, this.title, this.description, /* this.priority, */ this.status);
       this.closeModal();
     }
   }
