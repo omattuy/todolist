@@ -67,7 +67,7 @@ ion-footer {
     color: var(--ion-color-primary);
     font-size: 2em;
     margin: auto;
- }
+}
 
  .create_task_not_active {
     color: gray;
@@ -91,6 +91,18 @@ ion-footer {
     background-color: gray;
     color: white;
     margin-bottom: 20px;
+}
+
+.report_tasks_active {
+    font-size: 1.7em;
+    margin: auto;
+    fill: var(--ion-color-primary) !important;
+}
+
+.report_tasks_not_active {
+    font-size: 1.7em;
+    margin: auto;
+    fill: gray !important;
 }
 
 a {

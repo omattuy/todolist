@@ -34,6 +34,7 @@ export class TasksReportPage implements OnInit {
   }
 
   getFinishedTasks() {
+    this.number_finished_tasks = 0;
     for (let i =0; i < this.tasks.length; i++) {
       if (this.tasks[i].completed == true) {
         this.number_finished_tasks += 1;
@@ -43,6 +44,7 @@ export class TasksReportPage implements OnInit {
   }
 
   getUnfinishedTasks() {
+    this.number_unfinished_tasks = 0;
     for (let i =0; i < this.tasks.length; i++) {
       if (this.tasks[i].completed == false) {
         this.number_unfinished_tasks += 1;

@@ -17,6 +17,7 @@
         <ion-badge *ngIf="tasks.length > 0" [ngClass]="{'number_tasks_active' : listTasks_isActive == true, 'number_tasks_not_active' : listTasks_isActive == false}"> {{ tasks.length }}</ion-badge>
       </div>
       <ion-icon [routerLink]="['/todo-list/create-task']" name="add-circle" [ngClass]="{'create_task_active' : createTask_isActive == true, 'create_task_not_active' : createTask_isActive == false}"></ion-icon>
+      <ion-icon [routerLink]="['/todo-list/tasks-report']" [ngClass]="{'report_tasks_active' : reportTasks_isActive == true, 'report_tasks_not_active' : reportTasks_isActive == false}" src="../assets/report.svg"></ion-icon>
     </ion-footer>
  
 </ion-app>
