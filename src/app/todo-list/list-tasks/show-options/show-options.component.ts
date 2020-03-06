@@ -19,7 +19,7 @@ export class ShowOptionsComponent implements OnInit {
   title: string;
   description: string;
   priority: string;
-  status: string;
+  //status: string;
 
   constructor(private ev: DataTransferService,
               private alertCtrl: AlertController,

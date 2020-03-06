@@ -19,7 +19,8 @@ export class ListTasksPage implements OnInit {
   id: string;
   title: string;
   description: string;
-  status: string;
+  completed: boolean;
+  
   task_idx:number;
   color_palette: Array<string> = [];
 
@@ -42,95 +43,96 @@ export class ListTasksPage implements OnInit {
   loadTaskLists() {
 
     /* Comment / uncomment the code below for debugging purposes */
-      //this.tasks = this.ev.getTasks();
+      this.tasks = this.ev.getTasks();
+    
     /* Comment / uncomment the code below for debugging purposes */
     
-    this.tasks = [
+    /* this.tasks = [
       {
         id: "task-0",
         priority: "Low",
         title: "primeira descrição",
         description: "primeiro comentário",
-        status: 'Done'
+        completed: false
       },
       {
         id: "task-1",
         priority: "Medium",
         title: "segunda descrição",
         description: "segundo comentário",
-        status: 'Done'
+        completed: false
       },
       {
         id: "task-4",
         priority: "Low",
         title: "terceira descrição",
         description: "terceiro comentário",
-        status: 'Done'
+        completed: false
       },
       {
         id: "task-5",
         priority: "Low",
         title: "quarta descrição",
         description: "terceiro comentário",
-        status: 'Done'
+        completed: false
       },
       {
         id: "task-6",
         priority: "Low",
         title: "quarta descrição",
         description: "terceiro comentário",
-        status: 'Done'
+        completed: false
       },
       {
         id: "task-7",
         priority: "Low",
         title: "quarta descrição",
         description: "terceiro comentário",
-        status: 'Done'
+        completed: false
       },
       {
         id: "task-7",
         priority: "Low",
         title: "quarta descrição",
         description: "terceiro comentário",
-        status: 'Done'
+        completed: false
       },
       {
         id: "task-7",
         priority: "Low",
         title: "quarta descrição",
         description: "terceiro comentário",
-        status: 'Done'
+        completed: false
       },
       {
         id: "task-7",
         priority: "Low",
         title: "quarta descrição",
         description: "terceiro comentário",
-        status: 'Done'
+        completed: false
       },
       {
         id: "task-7",
         priority: "Low",
         title: "quarta descrição",
         description: "terceiro comentário",
-        status: 'Done'
+        completed: false
       },
       {
         id: "task-7",
         priority: "Low",
         title: "quarta descrição",
         description: "terceiro comentário",
-        status: 'Done'
+        completed: false
       },
       {
         id: "task-7",
         priority: "Low",
         title: "quarta descrição",
         description: "terceiro comentário",
-        status: 'Done'
+        completed: false
       }
-    ]
+    ] */
 
   }
 
@@ -141,15 +143,15 @@ export class ListTasksPage implements OnInit {
   setColorPalette() {
     for (let i = 0; i < this.tasks.length; i++) {
       if (i == 0) {
-        this.color_palette[0] = "rgb(255,99,71)";
+        this.color_palette[0] = "rgb(87, 198, 218)";
         //this.color_palette[0] = "rgb(87, 198, 218)";
       } else {
         this.color_palette[i] = "rgb(" +
-                          (Number(this.color_palette[i-1].slice(this.color_palette[i-1].indexOf("(") + 1, this.color_palette[i-1].indexOf(","))) + 35).toString() +
+                          (Number(this.color_palette[i-1].slice(this.color_palette[i-1].indexOf("(") + 1, this.color_palette[i-1].indexOf(","))) + 15).toString() +
                           "," +
-                          (Number(this.color_palette[i-1].slice(this.color_palette[i-1].indexOf(",") + 1, this.color_palette[i-1].indexOf(",", this.color_palette[i-1].indexOf(",") + 1))) + 22).toString() +
+                          (Number(this.color_palette[i-1].slice(this.color_palette[i-1].indexOf(",") + 1, this.color_palette[i-1].indexOf(",", this.color_palette[i-1].indexOf(",") + 1))) + 15).toString() +
                           "," +
-                          (Number(this.color_palette[i-1].slice(this.color_palette[i-1].indexOf(",", this.color_palette[i-1].indexOf(",") + 1) + 1, this.color_palette[i-1].indexOf(")"))) + 22).toString() +
+                          (Number(this.color_palette[i-1].slice(this.color_palette[i-1].indexOf(",", this.color_palette[i-1].indexOf(",") + 1) + 1, this.color_palette[i-1].indexOf(")"))) + 15).toString() +
                           ")";
       }
     }
@@ -178,7 +180,7 @@ export class ListTasksPage implements OnInit {
       if (id == this.tasks[i].id) {
         this.title = this.tasks[i].title;
         this.description = this.tasks[i].description;
-        this.status = this.tasks[i].status;
+        this.completed = this.tasks[i].completed;
       }
     }
     const modal = await this.modalController.create({
@@ -186,7 +188,7 @@ export class ListTasksPage implements OnInit {
       componentProps: {
         title: this.title,
         description: this.description,
-        status: this.status
+        completed: this.completed
       },
       cssClass: 'task_modal'
     });

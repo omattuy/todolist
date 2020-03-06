@@ -10,12 +10,12 @@
 }
 
 .question {
-    /* position: absolute;
-    width: 200px;
-    left: 50%;
-    margin-left: -100px;
-    top: 1%; */
-    font-weight: bold;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 45px;
+    font-weight: bold;  
 }
 
 #close_task {
@@ -32,58 +32,47 @@
 }
 
 .title_container {
-    height: 20%;
+    height: 30%;
 }
 
-.title_span {
+/* .title_span {
     position: absolute;
-    height: 20%;
-    top: 12%;
+    height: 30%;
+    top: 25%;
     left: 2%;
-}
+} */
 
 .title_item {
     --highlight-height: 0;
     position: absolute;
-    height: 20%;
-    top: 10%;
+    height: 30%;
+    top: 25%;
     left: 0;
     right: 3%;
 }
 
-.title_checkbox {
-    position: absolute;
-    top: 14%;
-    right: 0;
-}
-
 .description_container {
-    height: 20%;
+    height: 30%;
 }
 
-.description_span {
+/* .description_span {
     position: absolute;
-    height: 20%;
-    top: 32%;
+    height: 30%;
+    top: 50%;
     left: 2%;
-}
+} */
 
 .description_item {
     --highlight-height: 0;
     position: absolute;
-    height: 20%;
-    top: 30%;
+    height: 30%;
+    top: 50%;
     left: 0;
     right: 3%;
 }
 
-.description_checkbox {
-    position: absolute;
-    top: 34%;
-    right: 0;
-}
 
-.priority_container {
+/* .priority_container {
     height: 20%;
 }
 
@@ -107,9 +96,9 @@
     position: absolute;
     top: 54%;
     right: 0;
-}
+} */
 
-.status_container {
+/* .status_container {
     height: 20%;
 }
 
@@ -133,7 +122,7 @@
     position: absolute;
     top: 74%;
     right: 0;
-}
+} */
 
 .save_btn {
     position: absolute;

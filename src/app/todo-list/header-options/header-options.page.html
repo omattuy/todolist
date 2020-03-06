@@ -1,8 +1,7 @@
 <ion-list>
-  <ion-item [routerLink]="['/todo-list/']" button>My Tasks</ion-item>
-  <ion-item button>Task Report</ion-item>
-  <ion-item button>Pomodoro Time Tracker </ion-item>
-  <!-- <ion-item button>Pomodoro Time Tracker <img class="tomato" src="../../assets/tomato.svg"/> </ion-item> -->
-  <ion-item button>Tasks Best Practices</ion-item>
-  <ion-item lines="none" detail="false" button (click)="dismissPopOver()">Close</ion-item>
+  <ion-item [routerLink]="['/todo-list/']" button (click)="dismissPopOver()">My Tasks</ion-item>
+  <ion-item [routerLink]="['/todo-list/create-task']" button (click)="dismissPopOver()">Create Task</ion-item>
+  <ion-item button (click)="dismissPopOver()">Task Report</ion-item>
+  <!-- <ion-item button>Pomodoro Time Tracker </ion-item>
+  <ion-item button>Tasks Best Practices</ion-item> -->
 </ion-list>

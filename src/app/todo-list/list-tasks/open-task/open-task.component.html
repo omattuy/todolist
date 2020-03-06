@@ -15,7 +15,10 @@
   </div>
 
   <div class="wrapper">
-    <div class="status"> Status: <strong>{{ status }}</strong> </div>
+    <div class="status"> Status:
+      <strong *ngIf="completed == true">Done</strong>
+      <strong *ngIf="completed == false">Not done</strong>
+    </div>
   </div>
 
 </div>

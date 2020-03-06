@@ -3,8 +3,10 @@ export class Task {
     title: string;
     priority: string;
     description?: string;
-    status: string;
+    //status: string;
+    completed: boolean;
     constructor () {
-        this.status = 'Not started';
+        //this.status = 'Not started';
+        this.completed = false;
     }
 }

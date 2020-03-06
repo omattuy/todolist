@@ -1,25 +1,25 @@
 <div class="container">
 
-  <span class="question">What would you like to edit?</span>
+  <div class="question">
+    What would you like to edit?
+  </div>
 
   <ion-icon id="close_task" name="close-circle" (click)="closeModal()"></ion-icon>
 
   <div class="title_container">
-    <ion-item *ngIf="edited_title == true" class="title_item">
+    <ion-item class="title_item">
       <ion-label position="stacked">Title *</ion-label>
       <ion-input [(ngModel)]="title"></ion-input>
     </ion-item>
-    <span *ngIf="edited_title == false" class="title_span">Title</span>
-    <ion-checkbox class="title_checkbox" (click)="editTitle()" slot="end"></ion-checkbox>
+    <!-- <span *ngIf="edited_title == false" class="title_span">Title</span> -->
   </div>
 
   <div class="description_container">
-    <ion-item *ngIf="edited_description == true" class="description_item">
+    <ion-item class="description_item">
       <ion-label position="stacked">Description * (max 800 words)</ion-label>
       <ion-textarea [(ngModel)]="description" placeholder="" maxlength='800'></ion-textarea>
     </ion-item>
-    <span *ngIf="edited_description == false" class="description_span">Description</span>
-    <ion-checkbox class="description_checkbox" (click)="editDescription()" slot="end"></ion-checkbox>
+    <!-- <span *ngIf="edited_description == false" class="description_span">Description</span> -->
   </div>
 
   <!-- <div class="priority_container">
@@ -32,10 +32,9 @@
       </ion-item>
     </ion-list>
     <span *ngIf="edited_priority == false" class="priority_span">Priority</span>
-    <ion-checkbox class="priority_checkbox" (click)="editPriority()" slot="end"></ion-checkbox>
   </div> -->
 
-  <div class="status_container"> 
+  <!-- <div class="status_container"> 
     <ion-list *ngIf="edited_status == true" class="status_item">
       <ion-item>
         <ion-label position="stacked">Status *</ion-label>
@@ -45,8 +44,7 @@
       </ion-item>
     </ion-list>
     <span *ngIf="edited_status == false" class="status_span">Status</span>
-    <ion-checkbox class="status_checkbox" (click)="editStatus()" slot="end"></ion-checkbox>
-  </div>
+  </div> -->
   
   <ion-button color="light" (click)="editTask()" class="save_btn">
     Save

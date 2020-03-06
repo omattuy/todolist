@@ -17,7 +17,7 @@ export class DataTransferService {
     return this.tasks;
   }
 
-  public editTask(id, title, description, /* priority, */ status): void {
+  public editTask(id, title, description/* priority, */ /* status */): void {
     for (let i = 0; i < this.tasks.length; i++) {
       if (id == this.tasks[i].id) {
         if (title != undefined) {
@@ -29,9 +29,9 @@ export class DataTransferService {
         /* if (priority != undefined) {
           this.tasks[i].priority = priority;
         } */
-        if (status != undefined) {
+       /*  if (status != undefined) {
           this.tasks[i].status = status;
-        }
+        } */
       }
     }
   }

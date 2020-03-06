@@ -4,7 +4,11 @@
       <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
         <div *ngFor="let task of tasks; index as task_idx" [ngStyle]="{'background-color' : color_palette[task_idx]}" class="task" lines="none">
           <ion-reorder class="reordering_icon" slot="start"></ion-reorder>
-          <span class="title" [ngClass]="{'completed_task' : task.status == 'Completed', 'incompleted_task' : task.status != 'Completed'}" (click)="openModal(task.id)">{{ task.title }}</span>
+          <ion-checkbox [(ngModel)]="task.completed" class="checkbox"></ion-checkbox>
+          <!-- <div class="title_btn" [ngClass]="{'completed_task' : task.status == 'Completed', 'incompleted_task' : task.status != 'Completed'}" (click)="openModal(task.id)"> -->
+          <div class="title_btn" (click)="openModal(task.id)">
+            <div [ngClass]="{'completed_task' : task.completed == true, 'incompleted_task' : task.completed == false}">{{ task.title }}</div>
+          </div>
           <ion-icon (click)="showOptions($event, task.id)" class="options_icon" name="ellipsis-vertical"></ion-icon>
         </div>
       </ion-reorder-group>
