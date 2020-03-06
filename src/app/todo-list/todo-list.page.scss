@@ -105,6 +105,19 @@ ion-footer {
     fill: gray !important;
 }
 
+.pomodoro_active {
+    font-size: 1.7em;
+    margin: auto;
+    fill: var(--ion-color-primary) !important;
+}
+
+.pomodoro_not_active {
+    font-size: 1.7em;
+    margin: auto;
+    fill: gray !important;
+}
+
+
 a {
     text-decoration: none;
 }

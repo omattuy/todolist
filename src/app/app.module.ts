@@ -15,11 +15,28 @@ import { ShowOptionsComponent } from './todo-list/list-tasks/show-options/show-o
 import { OpenTaskComponent } from './todo-list/list-tasks/open-task/open-task.component';
 import { EditTaskComponent } from './todo-list/list-tasks/edit-task/edit-task.component';
 import { HeaderOptionsPage } from './todo-list/header-options/header-options.page';
+import { TasksReportPage } from './todo-list/tasks-report/tasks-report.page';
+import { PomodoroTechniquePage } from './todo-list/pomodoro-technique/pomodoro-technique.page';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @NgModule ({
-  declarations: [AppComponent, TodoListPage, PageNotFoundPage, ShowOptionsComponent, OpenTaskComponent, EditTaskComponent, HeaderOptionsPage],
-  entryComponents: [ShowOptionsComponent, OpenTaskComponent, EditTaskComponent, HeaderOptionsPage],
-  imports: [BrowserModule, IonicModule.forRoot(), FormsModule, TodoListPageModule, AppRoutingModule],
+  declarations: [AppComponent, TodoListPage, PageNotFoundPage, ShowOptionsComponent, OpenTaskComponent, EditTaskComponent, HeaderOptionsPage, TasksReportPage, PomodoroTechniquePage],
+  entryComponents: [ShowOptionsComponent, OpenTaskComponent, EditTaskComponent, HeaderOptionsPage, TasksReportPage, PomodoroTechniquePage],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    FormsModule,
+    TodoListPageModule,
+    AppRoutingModule,
+    NgCircleProgressModule.forRoot({
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: "#512b58",
+      innerStrokeColor: "#9fe6ec",
+      animationDuration: 300
+    })
+  ],
   providers: [
     StatusBar,
     SplashScreen,

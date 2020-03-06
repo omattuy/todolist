@@ -4,6 +4,7 @@ import { TodoListPage } from './todo-list.page';
 import { CreateTaskPage } from './create-task/create-task.page';
 import { ListTasksPage } from './list-tasks/list-tasks.page';
 import { TasksReportPage } from './tasks-report/tasks-report.page';
+import { PomodoroTechniquePage } from './pomodoro-technique/pomodoro-technique.page';
 
 const routes: Routes = [
   {
@@ -12,18 +13,14 @@ const routes: Routes = [
     children: [
       { path: '', component: ListTasksPage },
       { path: 'create-task', component: CreateTaskPage },
-      { path: 'tasks-report', component: TasksReportPage }
+      { path: 'tasks-report', component: TasksReportPage },
+      { path: 'pomodoro-technique', component: PomodoroTechniquePage }
     ]
   },
   {
     path: 'header-options',
     loadChildren: () => import('./header-options/header-options.module').then( m => m.HeaderOptionsPageModule)
-  }/* ,
-  {
-    path: 'tasks-report',
-    loadChildren: () => import('./tasks-report/tasks-report.module').then( m => m.TasksReportPageModule)
-  } */
-
+  }
 
 ];
 

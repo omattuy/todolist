@@ -16,6 +16,7 @@ export class TodoListPage implements OnInit {
   listTasks_isActive: boolean;
   createTask_isActive: boolean;
   reportTasks_isActive: boolean;
+  pomodoro_isActive: boolean;
 
   constructor(private ev: DataTransferService,
               public popoverController: PopoverController,
@@ -24,6 +25,7 @@ export class TodoListPage implements OnInit {
     this.listTasks_isActive = true;
     this.createTask_isActive = false;
     this.reportTasks_isActive = false;
+    this.pomodoro_isActive = false;
 
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
@@ -32,14 +34,22 @@ export class TodoListPage implements OnInit {
           this.createTask_isActive = true;
           this.listTasks_isActive = false;
           this.reportTasks_isActive = false;
+          this.pomodoro_isActive = false;
         } else if (e.url == "/todo-list") {
           this.listTasks_isActive = true;
           this.createTask_isActive = false;
           this.reportTasks_isActive = false;
+          this.pomodoro_isActive = false;
         } else if (e.url == "/todo-list/tasks-report") {
           this.listTasks_isActive = false;
           this.createTask_isActive = false;
           this.reportTasks_isActive = true;
+          this.pomodoro_isActive = false;
+        } else if (e.url == "/todo-list/pomodoro-technique") {
+          this.listTasks_isActive = false;
+          this.createTask_isActive = false;
+          this.reportTasks_isActive = false;
+          this.pomodoro_isActive = true;
         }
       }
    })
