@@ -25,22 +25,22 @@
     margin: auto;
     margin-bottom: 10px;
     display: block;
-    color: gray;
+    color: var(--ion-color-secondary);
     font-size: 2em;
 }
 
 .edit_icon:hover {
-    color: var(--ion-color-primary);
+    color: white;
 }
 
 .delete_icon {
     width: 50%;
     margin: auto;
     display: block;
-    color: gray;
+    color: var(--ion-color-secondary);
     font-size: 2em;
 }
 
 .delete_icon:hover {
-    color: var(--ion-color-primary);
+    color: white;
 }

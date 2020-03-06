@@ -16,12 +16,6 @@
     border-bottom: 1px solid lightgray;
 }
 
-/* .title {
-    padding-top: 17px;
-    margin-left: 13px;
-    float: left;
-} */
-
 .completed_task {
     padding-top: 17px;
     margin-left: 13px;
@@ -46,6 +40,7 @@
 
 .checkbox {
     position: absolute;
+    --size: 1em;
     top: 17px;
     left: 10%;
 }

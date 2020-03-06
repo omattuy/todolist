@@ -1,0 +1,30 @@
+.container {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 30px;
+    height: 100%;
+    text-align: center;
+}
+
+.title {
+    font-weight: bold;
+    font-size: large;
+    text-decoration: underline;
+}
+
+.content {
+    position: relative;
+    margin-top: 50px;
+}
+
+.finished_tasks {
+    position: absolute;
+    top: 0;
+    left: 5%;
+}
+
+.unfinished_tasks {
+    position: absolute;
+    left: 5%;
+    top: 80px;
+}
