@@ -4,11 +4,11 @@
     <ion-datetime class="date_time_value" display-format="mm" picker-format="mm" done-text="Select" minuteValues="15,30,45,50" [(ngModel)]='selected_date'></ion-datetime>
   </ion-item>
 
-  <ion-icon *ngIf="started_icon_showing == true" class="start_btn" src="../assets/start-button.svg" (click)="startAndStopPomodoro()"></ion-icon>
-  <ion-icon *ngIf="stoped_icon_showing == true" class="stop_btn" name="stop-circle-outline" (click)="startAndStopPomodoro()"></ion-icon>
+  <ion-icon *ngIf="start_icon_showing == true" class="start_btn" src="../assets/start-button.svg" (click)="startAndStopPomodoro()"></ion-icon>
+  <ion-icon *ngIf="stop_icon_showing == true" class="stop_btn" name="stop-circle-outline" (click)="startAndStopPomodoro()"></ion-icon>
 
   <div class="wrapper">
-    <circle-progress class="pomodoro"
+    <circle-progress
       [percent]="percent"
       [maxPercent]="100"
       [startFromZero]="false"

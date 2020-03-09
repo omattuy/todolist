@@ -5,6 +5,7 @@
 }
 
 .start_btn {
+    z-index: 100;
     width: 35px;
     height: 35px;
     position: absolute;
@@ -14,6 +15,7 @@
 }
 
 .stop_btn {
+    z-index: 100;
     width: 40px;
     height: 40px;
     position: absolute;
