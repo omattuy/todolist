@@ -28,7 +28,7 @@ export class CreateTaskPage implements OnInit {
   }
 
   async createNewTask() {
-    if (this.task.title != undefined && this.task.description != undefined /* && this.task.priority != undefined */) {
+    if (this.task.title != undefined && this.task.notes != undefined /* && this.task.priority != undefined */) {
       this.createTask();
       const toast = await this.toastController.create({
         message: 'The task has been created!',

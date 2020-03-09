@@ -17,9 +17,8 @@ export class ShowOptionsComponent implements OnInit {
   tasks: Task[] = [];
   id: string;
   title: string;
-  description: string;
+  notes: string;
   priority: string;
-  //status: string;
 
   constructor(private ev: DataTransferService,
               private alertCtrl: AlertController,
@@ -47,7 +46,7 @@ export class ShowOptionsComponent implements OnInit {
       if (id == this.tasks[i].id) {
         this.title = this.tasks[i].title;
         this.priority = this.tasks[i].priority;
-        this.description = this.tasks[i].description;
+        this.notes = this.tasks[i].notes;
         this.status = this.tasks[i].status;
       }
     }
@@ -56,7 +55,7 @@ export class ShowOptionsComponent implements OnInit {
       componentProps: {
         title: this.title,
         priority: this.priority,
-        description: this.description,
+        notes: this.notes,
         status: this.status
       },
       cssClass: 'task_modal'

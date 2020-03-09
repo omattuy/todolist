@@ -18,7 +18,7 @@ export class ListTasksPage implements OnInit {
   tasks: Task[] = [];
   id: string;
   title: string;
-  description: string;
+  notes: string;
   completed: boolean;
   
   task_idx:number;
@@ -52,84 +52,84 @@ export class ListTasksPage implements OnInit {
         id: "task-0",
         priority: "Low",
         title: "primeira descrição",
-        description: "primeiro comentário",
+        notes: "primeiro comentário",
         completed: false
       },
       {
         id: "task-1",
         priority: "Medium",
         title: "segunda descrição",
-        description: "segundo comentário",
+        notes: "segundo comentário",
         completed: false
       },
       {
         id: "task-4",
         priority: "Low",
         title: "terceira descrição",
-        description: "terceiro comentário",
+        notes: "terceiro comentário",
         completed: false
       },
       {
         id: "task-5",
         priority: "Low",
         title: "quarta descrição",
-        description: "terceiro comentário",
+        notes: "terceiro comentário",
         completed: false
       },
       {
         id: "task-6",
         priority: "Low",
         title: "quarta descrição",
-        description: "terceiro comentário",
+        notes: "terceiro comentário",
         completed: false
       },
       {
         id: "task-7",
         priority: "Low",
         title: "quarta descrição",
-        description: "terceiro comentário",
+        notes: "terceiro comentário",
         completed: false
       },
       {
         id: "task-7",
         priority: "Low",
         title: "quarta descrição",
-        description: "terceiro comentário",
+        notes: "terceiro comentário",
         completed: false
       },
       {
         id: "task-7",
         priority: "Low",
         title: "quarta descrição",
-        description: "terceiro comentário",
+        notes: "terceiro comentário",
         completed: false
       },
       {
         id: "task-7",
         priority: "Low",
         title: "quarta descrição",
-        description: "terceiro comentário",
+        notes: "terceiro comentário",
         completed: false
       },
       {
         id: "task-7",
         priority: "Low",
         title: "quarta descrição",
-        description: "terceiro comentário",
+        notes: "terceiro comentário",
         completed: false
       },
       {
         id: "task-7",
         priority: "Low",
         title: "quarta descrição",
-        description: "terceiro comentário",
+        notes: "terceiro comentário",
         completed: false
       },
       {
         id: "task-7",
         priority: "Low",
         title: "quarta descrição",
-        description: "terceiro comentário",
+        notes: "terceiro comentário",
         completed: false
       }
     ] */
@@ -179,7 +179,7 @@ export class ListTasksPage implements OnInit {
     for (let i = 0; i < this.tasks.length; i++) {
       if (id == this.tasks[i].id) {
         this.title = this.tasks[i].title;
-        this.description = this.tasks[i].description;
+        this.notes = this.tasks[i].notes;
         this.completed = this.tasks[i].completed;
       }
     }
@@ -187,7 +187,7 @@ export class ListTasksPage implements OnInit {
       component: OpenTaskComponent,
       componentProps: {
         title: this.title,
-        description: this.description,
+        notes: this.notes,
         completed: this.completed
       },
       cssClass: 'task_modal'

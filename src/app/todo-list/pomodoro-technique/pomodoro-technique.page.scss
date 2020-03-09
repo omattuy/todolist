@@ -4,21 +4,35 @@
     height: 100%;
 }
 
-.title {
+.start_btn {
+    width: 35px;
+    height: 35px;
     position: absolute;
-    top: 15%;
-    left: 50%;
-    width: 200px;
-    margin-left: -100px;
-    color: black;
-    font-weight: bold;
-    font-size: large;
+    top: 13%;
+    right: 5%;
+    cursor: pointer;
 }
 
-.pomodoro {
+.stop_btn {
+    width: 40px;
+    height: 40px;
     position: absolute;
-    top: 25%;
+    top: 13%;
+    right: 5%;
+    cursor: pointer;
+}
+
+.wrapper {
+    margin-top: 5%;
+    position: relative;
+    text-align: center;
+}
+
+.minutes_counter {
+    position: absolute;
+    bottom: 15%;
     left: 50%;
-    width: 300px;
-    margin-left: -130px;
+    width: 160px;
+    margin-left: -80px;
+    font-weight: bold;
 }

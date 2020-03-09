@@ -13,15 +13,15 @@ export class EditTaskComponent implements OnInit {
 
   tasks: Task[] = [];
   id: string;
-  title?: string;
-  description?: string;
+  title: string;
+  notes?: string;
   /* priorities = ['High', 'Medium', 'Low'];
   priority?: string; */
   //types_status = ['Not started', 'In progress', 'Completed'];
   //status?: string;
 
   //edited_title: boolean;
-  //edited_description: boolean;
+  //edited_notes: boolean;
   //edited_priority: boolean;
   //edited_status: boolean;
 
@@ -29,7 +29,7 @@ export class EditTaskComponent implements OnInit {
               public toastController: ToastController,
               public modalController: ModalController) {
     //this.edited_title = false;
-    //this.edited_description = false;
+    //this.edited_notes = false;
     //this.edited_priority = false;
     //this.edited_status = false;
  }
@@ -40,8 +40,8 @@ export class EditTaskComponent implements OnInit {
     this.edited_title = !this.edited_title;
   }
 
-  editDescription() {
-    this.edited_description = !this.edited_description;
+  editNotes() {
+    this.edited_notes = !this.edited_notes;
   } */
 
   /* editPriority() {
@@ -69,7 +69,7 @@ export class EditTaskComponent implements OnInit {
 
   editTask () {
     this.alertMessage('The task has been edited!');
-    this.ev.editTask(this.id, this.title, this.description /* this.priority, */ /* this.status */);
+    this.ev.editTask(this.id, this.title, this.notes /* this.priority, */ /* this.status */);
     this.closeModal();
   }
 

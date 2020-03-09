@@ -1,14 +1,17 @@
 <div class="container">
-  <div class="title">
-    Pomodoro Technique
-  </div>
+  <ion-item>
+    <ion-label>Total Time (minutes)</ion-label>
+    <ion-datetime class="date_time_value" display-format="mm" picker-format="mm" done-text="Select" minuteValues="15,30,45,50" [(ngModel)]='selected_date'></ion-datetime>
+  </ion-item>
 
-  <div class="pomodoro">
-    <circle-progress (click)="startPomodoro()"
+  <ion-icon *ngIf="started_icon_showing == true" class="start_btn" src="../assets/start-button.svg" (click)="startAndStopPomodoro()"></ion-icon>
+  <ion-icon *ngIf="stoped_icon_showing == true" class="stop_btn" name="stop-circle-outline" (click)="startAndStopPomodoro()"></ion-icon>
+
+  <div class="wrapper">
+    <circle-progress class="pomodoro"
       [percent]="percent"
       [maxPercent]="100"
       [startFromZero]="false"
-      [radius]="radius"
       [showTitle]="false"
       [showSubtitle]="false"
       [subtitleFontSize]="40"
@@ -16,12 +19,15 @@
       [outerStrokeWidth]="14"
       [outerStrokeColor]="'#8000FF'"
       [showZeroOuterStroke]="false"
-      [backgroundStroke]="'black'"
+      [backgroundStroke]="'gray'"
       [backgroundStrokeWidth]="3"
       [outerStrokeGradient]="false"
-      [outerStrokeGradientStopColor]="'#FF00CB'"
-      [showInnerStroke]="false"
-  ></circle-progress>
+      [showInnerStroke]="false">
+    </circle-progress>
+  </div>
+
+  <div class="minutes_counter">
+    Time left: {{ minutes }} m : {{ seconds }} s
   </div>
 
 </div>

@@ -17,14 +17,14 @@ export class DataTransferService {
     return this.tasks;
   }
 
-  public editTask(id, title, description/* priority, */ /* status */): void {
+  public editTask(id, title, notes/* priority, */ /* status */): void {
     for (let i = 0; i < this.tasks.length; i++) {
       if (id == this.tasks[i].id) {
         if (title != undefined) {
           this.tasks[i].title = title;
         }
-        if (description != undefined) {
-          this.tasks[i].description = description;
+        if (notes != undefined) {
+          this.tasks[i].notes = notes;
         }
         /* if (priority != undefined) {
           this.tasks[i].priority = priority;
