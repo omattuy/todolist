@@ -20,8 +20,10 @@ export class PomodoroTechniquePage implements OnInit {
   timer_initialized_before: boolean;
   minutes_interval: any;
   seconds_interval: any;
+  last_sixty_seconds_interval: any;
 
   constructor(public alertController: AlertController) {
+    //this.selected_date = "30";
     this.percent = 0;
     this.minutes = 0;
     this.seconds = 60;
@@ -40,6 +42,10 @@ export class PomodoroTechniquePage implements OnInit {
     await alert.present();
   }
 
+  getSelectedNumberMinutes() {
+    return this.selected_minutes = Number(this.selected_date.slice(this.selected_date.indexOf("T") + 4, this.selected_date.indexOf("T") + 6));
+  }
+
   startAndStopPomodoro() {
     if (this.selected_date == undefined) {
       this.presentAlert();
@@ -50,7 +56,7 @@ export class PomodoroTechniquePage implements OnInit {
       if (this.timer_initialized_before == false) {
         this.minutes = this.selected_minutes - 1;
         this.minutes_interval = setInterval(this.decreaseOneMinute.bind(this), 60000);
-        this.seconds_interval = setInterval(this.decreaseSeconds.bind(this), 1000);
+        this.seconds_interval = setInterval(this.decreaseSixtySeconds.bind(this), 1000);
       }
       this.timer_initialized_before = true;
     }
@@ -58,7 +64,7 @@ export class PomodoroTechniquePage implements OnInit {
 
   decreaseOneMinute() {
     if (this.start_icon_showing == false) {
-      this.percent = this.percent + (100 / this.getSelectedNumberMinutes());
+      this.percent = this.percent + (100 / this.selected_minutes);
       this.minutes = this.minutes - 1;
       if (this.minutes == 0) {
         clearInterval(this.minutes_interval);
@@ -67,21 +73,30 @@ export class PomodoroTechniquePage implements OnInit {
     //console.log("(Minutes) " + this.minutes);
   }
 
-  decreaseSeconds() {
+  decreaseSixtySeconds() {
     if (this.start_icon_showing == false) {
       this.seconds = this.seconds - 1;
       if (this.seconds == 0) {
-        this.seconds = 60;
-      }
-      if (this.minutes == 0) {
-        clearInterval(this.seconds_interval);
+        if (this.minutes > 0) {
+          this.seconds = 60;
+        } else if (this.minutes == 0) {
+          this.seconds = 60;
+          clearInterval(this.seconds_interval);
+          this.last_sixty_seconds_interval = setInterval(this.decreaseLastSixtySeconds.bind(this), 1000);
+        }
       }
     }
     //console.log("(Seconds) " + this.seconds);
   }
 
-  getSelectedNumberMinutes() {
-    return this.selected_minutes = Number(this.selected_date.slice(this.selected_date.indexOf("T") + 4, this.selected_date.indexOf("T") + 6));
+  decreaseLastSixtySeconds() {
+    if (this.start_icon_showing == false) {
+      this.seconds = this.seconds - 1;
+      if (this.seconds == 0) {
+        this.percent = this.percent + (100 / this.selected_minutes);
+        clearInterval(this.last_sixty_seconds_interval);
+      }
+    }
   }
 
 }
