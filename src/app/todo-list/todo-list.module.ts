@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { TodoListPageRoutingModule } from './todo-list-routing.module';
 import { CreateTaskPage } from './create-task/create-task.page';
 import { ListTasksPage } from './list-tasks/list-tasks.page';
+import { AuthGuard } from '../services/AuthGuard';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { ListTasksPage } from './list-tasks/list-tasks.page';
     IonicModule,
     TodoListPageRoutingModule
   ],
-  declarations: [CreateTaskPage, ListTasksPage]
+  declarations: [CreateTaskPage, ListTasksPage],
+  providers: [AuthGuard]
 })
 export class TodoListPageModule {}

@@ -12,6 +12,13 @@
     text-decoration: underline;
 }
 
+#myDiv {
+    width: 500px;
+    position: absolute;
+    left: 50%;
+    margin-left: -200px;
+}
+
 .content {
     position: relative;
     margin-top: 50px;

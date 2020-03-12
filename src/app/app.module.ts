@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { TodoListPage } from './todo-list/todo-list.page';
 import { TodoListPageModule } from './todo-list/todo-list.module';
 import { DataTransferService } from './services/DataTransferService';
+import { AuthenticationService } from './services/AuthenticationService';
+import { AuthGuard } from './services/AuthGuard';
 import { PageNotFoundPage } from './page-not-found/page-not-found.page';
 import { ShowOptionsComponent } from './todo-list/list-tasks/show-options/show-options.component';
 import { OpenTaskComponent } from './todo-list/list-tasks/open-task/open-task.component';
@@ -17,11 +19,15 @@ import { EditTaskComponent } from './todo-list/list-tasks/edit-task/edit-task.co
 import { HeaderOptionsPage } from './todo-list/header-options/header-options.page';
 import { TasksReportPage } from './todo-list/tasks-report/tasks-report.page';
 import { PomodoroTechniquePage } from './todo-list/pomodoro-technique/pomodoro-technique.page';
+import { LoginLogoutPage } from './login-logout/login-logout.page';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
 
 @NgModule ({
-  declarations: [AppComponent, TodoListPage, PageNotFoundPage, ShowOptionsComponent, OpenTaskComponent, EditTaskComponent, HeaderOptionsPage, TasksReportPage, PomodoroTechniquePage],
-  entryComponents: [ShowOptionsComponent, OpenTaskComponent, EditTaskComponent, HeaderOptionsPage, TasksReportPage, PomodoroTechniquePage],
+  declarations: [AppComponent, TodoListPage, PageNotFoundPage, ShowOptionsComponent, OpenTaskComponent, EditTaskComponent, HeaderOptionsPage, TasksReportPage, PomodoroTechniquePage, LoginLogoutPage],
+  entryComponents: [ShowOptionsComponent, OpenTaskComponent, EditTaskComponent, HeaderOptionsPage, TasksReportPage, PomodoroTechniquePage, LoginLogoutPage],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -35,13 +41,18 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
       outerStrokeColor: "#512b58",
       innerStrokeColor: "#9fe6ec",
       animationDuration: 300
-    })
+    }),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule
+    //FirebaseUIModule.forRoot(firebaseUiAuthConfig)
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    DataTransferService
+    DataTransferService,
+    AuthenticationService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

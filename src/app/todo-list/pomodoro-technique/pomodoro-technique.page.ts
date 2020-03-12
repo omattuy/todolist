@@ -63,6 +63,7 @@ export class PomodoroTechniquePage implements OnInit {
   }
 
   decreaseOneMinute() {
+    console.log(this.minutes_interval);
     if (this.start_icon_showing == false) {
       this.percent = this.percent + (100 / this.selected_minutes);
       this.minutes = this.minutes - 1;
@@ -74,6 +75,7 @@ export class PomodoroTechniquePage implements OnInit {
   }
 
   decreaseSixtySeconds() {
+    console.log(this.seconds_interval);
     if (this.start_icon_showing == false) {
       this.seconds = this.seconds - 1;
       if (this.seconds == 0) {

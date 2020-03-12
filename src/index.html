@@ -17,31 +17,36 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
+  <!-- PIE CHART -->
+  <!-- <script src='https://cdn.plot.ly/plotly-latest.min.js'></script> -->
+
 </head>
 
 <body>
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
-<!-- <script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyCNB2bZMV5dy1VrKr6LN6qLCuyckyhH6Ic",
-    authDomain: "my-task-manager-6a730.firebaseapp.com",
-    databaseURL: "https://my-task-manager-6a730.firebaseio.com",
-    projectId: "my-task-manager-6a730",
-    storageBucket: "my-task-manager-6a730.appspot.com",
-    messagingSenderId: "4081054744",
-    appId: "1:4081054744:web:0376a0ea64b135f63dbf6d"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-</script> -->
-
   <app-root></app-root>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBNxi0X54KuSQW1pt0dmUoMMAG_cD-R2Bg",
+      authDomain: "todolist-6caa0.firebaseapp.com",
+      databaseURL: "https://todolist-6caa0.firebaseio.com",
+      projectId: "todolist-6caa0",
+      storageBucket: "todolist-6caa0.appspot.com",
+      messagingSenderId: "165963241997",
+      appId: "1:165963241997:web:3badda4c39c040b32a9344",
+      measurementId: "G-EHHLB5X6TM"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
 </body>
 
 </html>

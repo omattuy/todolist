@@ -1,0 +1,48 @@
+<div class="container">
+
+  <div class="box">
+
+    <div *ngIf="!(afAuth.user | async)">
+      <div *ngIf="new_user == false">
+        <h4><strong>LOGIN</strong></h4>
+        <ion-item>
+          <ion-label>
+            E-mail
+          </ion-label>
+          <ion-input [(ngModel)]="user.email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            Password
+          </ion-label>
+          <ion-input [(ngModel)]="user.password"></ion-input>
+        </ion-item>
+        <ion-button (click)="login()">Login</ion-button>
+        <br><br>
+        or <span (click)="userIsNew()">Register</span>
+      </div>
+      <div *ngIf="new_user == true">
+        <h4><strong>REGISTER</strong></h4>
+        <ion-item>
+          <ion-label>
+            E-mail
+          </ion-label>
+          <ion-input [(ngModel)]="user.email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            Password
+          </ion-label>
+          <ion-input [(ngModel)]="user.password"></ion-input>
+        </ion-item>
+        <ion-button (click)="createAccount()">Register</ion-button>
+        <br><br>
+        or <span (click)="userIsNotNew()">Login</span>
+      </div>
+    </div>
+
+    <!-- <ion-button *ngIf="(afAuth.user | async)" (click)="logout()">Logout</ion-button> -->
+
+  </div>
+
+</div>

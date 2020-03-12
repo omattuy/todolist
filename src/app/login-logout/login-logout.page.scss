@@ -1,0 +1,28 @@
+.container {
+    height: 100%;
+    width: 100%;
+    background: purple;
+    color: white;
+    text-align: center;
+}
+
+.box {
+    margin-top: 100px;
+    width: auto;
+    height: 50%;
+    padding: 20px;
+    background: white;
+    color: black;
+    -webkit-box-shadow: 10px 10px 6px -3px rgba(0,0,0,0.41);
+    -moz-box-shadow: 10px 10px 6px -3px rgba(0,0,0,0.41);
+    box-shadow: 10px 10px 6px -3px rgba(0,0,0,0.41);
+}
+
+.buttons {
+    margin-top: 30px;
+}
+
+span {
+    cursor: pointer;
+    font-weight: bold;
+}

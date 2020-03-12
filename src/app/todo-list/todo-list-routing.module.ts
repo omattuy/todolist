@@ -5,11 +5,13 @@ import { CreateTaskPage } from './create-task/create-task.page';
 import { ListTasksPage } from './list-tasks/list-tasks.page';
 import { TasksReportPage } from './tasks-report/tasks-report.page';
 import { PomodoroTechniquePage } from './pomodoro-technique/pomodoro-technique.page';
+import { AuthGuard } from '../services/AuthGuard';
 
 const routes: Routes = [
   {
     path: 'todo-list',
     component: TodoListPage,
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: ListTasksPage },
       { path: 'create-task', component: CreateTaskPage },
