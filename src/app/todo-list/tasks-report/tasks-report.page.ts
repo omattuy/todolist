@@ -3,8 +3,6 @@ import { Router, NavigationEnd } from '@angular/router';
 import { DataTransferService } from '../../services/DataTransferService';
 import { Task } from '../../models/task';
 
-//declare let Plotly: any;
-
 @Component({
   selector: 'app-tasks-report',
   templateUrl: './tasks-report.page.html',
@@ -24,7 +22,6 @@ export class TasksReportPage implements OnInit {
         this.loadTaskLists();
         this.getFinishedTasks();
         this.getUnfinishedTasks();
-        //this.cheatePieChart();
       }
     })
   }
@@ -55,27 +52,5 @@ export class TasksReportPage implements OnInit {
     }
     return this.number_unfinished_tasks;
   }
-
-  /* cheatePieChart() {
-    var data = [{
-      values: [this.number_finished_tasks, this.number_unfinished_tasks],
-      labels: ['Finished', 'Unfinished'],
-      type: 'pie'
-    }];
-    
-    var colors = ["rgb(118, 17, 195)", "rgb(215, 11, 11)"];
-
-    var layout = {
-      autosize: false,
-      height: 300,
-      width: 500,
-      margin: {"t": 50, "b": 0, "l": 0, "r": 0},
-      marker: {
-        colors: colors
-      }
-    };
-    
-    Plotly.newPlot('myDiv', data, layout);
-  } */
 
 }

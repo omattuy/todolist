@@ -2,7 +2,7 @@
 
   <div class="box">
     <div *ngIf="new_user == false">
-      <h5><strong>LOGIN</strong></h5>
+      <h5><strong>LOG IN</strong></h5>
       (or <span class="register_or_login" (click)="userIsNew()">Register</span>)
       <ion-item>
         <ion-label position="stacked">
@@ -18,13 +18,13 @@
       </ion-item>
       <div class="wrapper">
         <div class="btn">
-          <ion-button size="small" (click)="login()">Register</ion-button>
+          <ion-button size="small" (click)="login()">Log In</ion-button>
         </div>
       </div>
     </div>
     <div *ngIf="new_user == true">
       <h5><strong>REGISTRATION</strong></h5>
-      (or <span class="register_or_login" (click)="userIsNotNew()">Login</span>)
+      (or <span class="register_or_login" (click)="userIsNotNew()">Log In</span>)
       <ion-item>
         <ion-label position="stacked">
           E-mail
@@ -45,17 +45,19 @@
     </div>
     <hr>
     Log in or Register with your social account:
-    <div class="facebook">
-      <button class="loginBtn loginBtn--facebook" (click)="authService.FacebookAuth()">
-        Login with Facebook
-      </button>
-      <!-- <ion-icon class="facebook_icon" name="logo-facebook" (click)="authService.FacebookAuth()"></ion-icon> -->
-    </div>
-    <div class="google">
-      <button class="loginBtn loginBtn--google" (click)="authService.GoogleAuth()">
-        Login with Google
-      </button>
-      <!-- <ion-icon class="google_icon" name="logo-google" (click)="authService.GoogleAuth()"></ion-icon> -->
+    <div class="social_accounts">
+      <div class="facebook">
+        <button class="loginBtn loginBtn--facebook" (click)="authService.FacebookAuth()">
+          Log In with Facebook
+        </button>
+        <!-- <ion-icon class="facebook_icon" name="logo-facebook" (click)="authService.FacebookAuth()"></ion-icon> -->
+      </div>
+      <div class="google">
+        <button class="loginBtn loginBtn--google" (click)="authService.GoogleAuth()">
+          Log In with Google
+        </button>
+        <!-- <ion-icon class="google_icon" name="logo-google" (click)="authService.GoogleAuth()"></ion-icon> -->
+      </div>
     </div>
   </div>
 

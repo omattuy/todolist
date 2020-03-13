@@ -7,18 +7,8 @@
     <ion-item>
       <ion-label position="stacked">Notes * (max 800 words)</ion-label>
       <ion-textarea [(ngModel)]="task.notes" placeholder="" required='true' maxlength='800'></ion-textarea>
-      <!-- <ion-input [(ngModel)]="task.notes"></ion-input> -->
     </ion-item>
-  
-    <!-- <ion-list>
-      <ion-item>
-        <ion-label position="stacked">Priority *</ion-label>
-        <ion-select (ionChange)="onChange($event)">
-          <ion-select-option *ngFor="let p of priority"><span>{{ p }}</span></ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-list> -->
-  
+
     <ion-button color="light" (click)="createNewTask()">
       Save
     </ion-button>

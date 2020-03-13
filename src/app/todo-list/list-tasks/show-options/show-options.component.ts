@@ -4,7 +4,6 @@ import { AlertController } from '@ionic/angular';
 import { PopoverController } from '@ionic/angular';
 import { DataTransferService } from '../../../services/DataTransferService';
 import { Task } from '../../../models/task';
-//import { OpenTaskComponent } from '../open-task/open-task.component';
 import { EditTaskComponent } from '../edit-task/edit-task.component';
 
 @Component({
@@ -16,9 +15,6 @@ export class ShowOptionsComponent implements OnInit {
 
   tasks: Task[] = [];
   id: string;
-  /* title: string;
-  notes: string;
-  priority: string; */
 
   constructor(private ev: DataTransferService,
               private alertCtrl: AlertController,
