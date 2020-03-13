@@ -24,3 +24,10 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+/* External Font-Family */
+
+@font-face {
+    font-family: KonstantGrotesk;
+    src: url(assets/font/KonstantGrotesk.otf) format("opentype");
+}

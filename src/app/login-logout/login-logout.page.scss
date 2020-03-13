@@ -1,16 +1,19 @@
+
 .container {
     height: 100%;
     width: 100%;
-    background: purple;
+    background: var(--ion-color-primary);
     color: white;
     text-align: center;
 }
 
 .box {
     margin-top: 100px;
+    margin-left: 8%;
+    margin-right: 8%;
     width: auto;
     height: 50%;
-    padding: 20px;
+    padding: 15px;
     background: white;
     color: black;
     -webkit-box-shadow: 10px 10px 6px -3px rgba(0,0,0,0.41);
@@ -18,8 +21,8 @@
     box-shadow: 10px 10px 6px -3px rgba(0,0,0,0.41);
 }
 
-.buttons {
-    margin-top: 30px;
+ion-button {
+    margin-top: 20px;
 }
 
 span {

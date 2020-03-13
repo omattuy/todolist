@@ -23,7 +23,6 @@ export class PomodoroTechniquePage implements OnInit {
   last_sixty_seconds_interval: any;
 
   constructor(public alertController: AlertController) {
-    //this.selected_date = "30";
     this.percent = 0;
     this.minutes = 0;
     this.seconds = 60;
@@ -34,16 +33,16 @@ export class PomodoroTechniquePage implements OnInit {
 
   ngOnInit() { }
 
+  getSelectedNumberMinutes() {
+    return this.selected_minutes = Number(this.selected_date.slice(this.selected_date.indexOf("T") + 4, this.selected_date.indexOf("T") + 6));
+  }
+
   async presentAlert() {
     const alert = await this.alertController.create({
       message: 'Select the number of minutes before starting the timer',
       buttons: ['OK']
     });
     await alert.present();
-  }
-
-  getSelectedNumberMinutes() {
-    return this.selected_minutes = Number(this.selected_date.slice(this.selected_date.indexOf("T") + 4, this.selected_date.indexOf("T") + 6));
   }
 
   startAndStopPomodoro() {

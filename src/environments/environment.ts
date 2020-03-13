@@ -14,11 +14,6 @@ export const environment = {
   }
 };
 
-//FACEBOOK
-//App ID: 820505575117920
-//App Secret: a2833dfb97bd7294505381fc4f06ac0d
-//OAth URI: https://todolist-6caa0.firebaseapp.com/__/auth/handler
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
