@@ -10,8 +10,10 @@ export class AuthGuard implements CanActivate {
     async checkUserIsLoggedIn() {
         const user = await this.authService.isLoggedIn();
         if (user) {
+            console.log("debug1");
             return true;
         } else {
+            console.log("debug2");
             return false;
         }
     }

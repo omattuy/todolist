@@ -44,7 +44,6 @@ import { environment } from '../environments/environment';
     }),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule
-    //FirebaseUIModule.forRoot(firebaseUiAuthConfig)
   ],
   providers: [
     StatusBar,

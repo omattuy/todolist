@@ -8,11 +8,11 @@
 }
 
 .box {
-    margin-top: 100px;
+    margin-top: 70px;
     margin-left: 8%;
     margin-right: 8%;
     width: auto;
-    height: 50%;
+    height: 400px;
     padding: 15px;
     background: white;
     color: black;
@@ -21,11 +21,58 @@
     box-shadow: 10px 10px 6px -3px rgba(0,0,0,0.41);
 }
 
-ion-button {
+.register_or_login {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.wrapper {
+    width: 100%;
+    display: block;
+}
+
+.btn {
+    display : block;
     margin-top: 20px;
 }
 
-span {
+hr { // https://css-tricks.com/examples/hrs/
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+/* .image {
+    width: 100%;
+    display : block;   
+} */
+
+.line_divider {
+    width: 200px;
+    height: 60px;
+}
+
+.facebook {
+    display: block;
+}
+
+.facebook_icon {
+    width: 35px;
+    height: 35px;
     cursor: pointer;
-    font-weight: bold;
+    color: var(--ion-color-secondary);
+}
+
+.google {
+    display: block;
+}
+
+.google_icon {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    color: var(--ion-color-secondary);
 }
