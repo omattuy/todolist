@@ -56,10 +56,10 @@ export class AuthenticationService {
 
     // FACEBOOK AUTHENTICATION
     FacebookAuth() {
-        return this.AuthLogin(new auth.FacebookAuthProvider());
+        return this.AuthLoginFacebbok(new auth.FacebookAuthProvider());
     }  
 
-    AuthLogin(provider) {
+    AuthLoginFacebbok(provider) {
         return this.afAuth.auth.signInWithPopup(provider)
         .then((result) => {
             this.router.navigate(["/todo-list"]);
@@ -68,5 +68,20 @@ export class AuthenticationService {
             console.log(error)
         })
     }
+
+// GOOGLE AUTHENTICATION
+  GoogleAuth() {
+    return this.AuthLoginGoogle(new auth.GoogleAuthProvider());
+  }  
+
+  AuthLoginGoogle(provider) {
+    return this.afAuth.auth.signInWithPopup(provider)
+    .then((result) => {
+        this.router.navigate(["/todo-list"]);
+        console.log('You have been successfully logged in!')
+    }).catch((error) => {
+        console.log(error)
+    })
+  }
 
 }

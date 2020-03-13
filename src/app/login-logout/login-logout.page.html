@@ -20,16 +20,6 @@
         <div class="btn">
           <ion-button size="small" (click)="login()">Register</ion-button>
         </div>
-        <hr>
-        Login with your social account:
-        <div class="facebook">
-          <!-- Calling FacebookAuth Api from AuthService -->
-          <ion-icon class="facebook_icon" name="logo-facebook" (click)="authService.FacebookAuth()"></ion-icon>
-        </div>
-        <div class="google">
-          <!-- GOOGLE SIGNIN -->
-          <ion-icon class="google_icon" name="logo-google"></ion-icon>
-        </div>
       </div>
     </div>
     <div *ngIf="new_user == true">
@@ -51,17 +41,21 @@
         <div class="btn">
           <ion-button size="small" (click)="createAccount()">Register</ion-button>
         </div>
-        <hr>
-        Register with your social account:
-        <div class="facebook">
-          <!-- Calling FacebookAuth Api from AuthService -->
-          <ion-icon class="facebook_icon" name="logo-facebook" (click)="authService.FacebookAuth()"></ion-icon>
-        </div>
-        <div class="google">
-          <!-- GOOGLE SIGNIN -->
-          <ion-icon class="google_icon" name="logo-google"></ion-icon>
-        </div>
       </div>
+    </div>
+    <hr>
+    Log in or Register with your social account:
+    <div class="facebook">
+      <button class="loginBtn loginBtn--facebook" (click)="authService.FacebookAuth()">
+        Login with Facebook
+      </button>
+      <!-- <ion-icon class="facebook_icon" name="logo-facebook" (click)="authService.FacebookAuth()"></ion-icon> -->
+    </div>
+    <div class="google">
+      <button class="loginBtn loginBtn--google" (click)="authService.GoogleAuth()">
+        Login with Google
+      </button>
+      <!-- <ion-icon class="google_icon" name="logo-google" (click)="authService.GoogleAuth()"></ion-icon> -->
     </div>
   </div>
 
