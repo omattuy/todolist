@@ -16,9 +16,9 @@ export class ShowOptionsComponent implements OnInit {
 
   tasks: Task[] = [];
   id: string;
-  title: string;
+  /* title: string;
   notes: string;
-  priority: string;
+  priority: string; */
 
   constructor(private ev: DataTransferService,
               private alertCtrl: AlertController,
@@ -34,35 +34,6 @@ export class ShowOptionsComponent implements OnInit {
   async dismissPopOver() {
     await this.popoverController.dismiss();
   }
-
-  /* openTask(id) {
-    let task_id = id;
-    this.openModal(task_id);
-    this.dismissPopOver();
-  }
-
-  async openModal(id) {
-    for (let i = 0; i < this.tasks.length; i++) {
-      if (id == this.tasks[i].id) {
-        this.title = this.tasks[i].title;
-        this.priority = this.tasks[i].priority;
-        this.notes = this.tasks[i].notes;
-        this.status = this.tasks[i].status;
-      }
-    }
-    const modal = await this.modalController.create({
-      component: OpenTaskComponent,
-      componentProps: {
-        title: this.title,
-        priority: this.priority,
-        notes: this.notes,
-        status: this.status
-      },
-      cssClass: 'task_modal'
-    });
-    return await modal.present();
-  } */
-
 
   editTask(id) {
     let task_id = id;

@@ -19,7 +19,19 @@ export class EditTaskComponent implements OnInit {
   constructor(private ev: DataTransferService,
               public toastController: ToastController,
               public modalController: ModalController) {
- }
+
+    this.loadTask();
+  }
+
+  loadTask() {
+    this.tasks = this.ev.getTasks();
+    for (let i = 0; i < this.tasks.length; i++) {
+      if (this.id = this.tasks[i].id) {
+        this.title = this.tasks[i].title;
+        this.notes = this.tasks[i].notes;
+      }
+    }
+  }
 
   ngOnInit() {}
 
@@ -39,7 +51,7 @@ export class EditTaskComponent implements OnInit {
   }
 
   editTask () {
-    this.alertMessage('The task has been edited!');
+    this.alertMessage('Task successfully edited!');
     this.ev.editTask(this.id, this.title, this.notes);
     this.closeModal();
   }

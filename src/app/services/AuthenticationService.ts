@@ -49,7 +49,6 @@ export class AuthenticationService {
     }
 
     isLoggedIn() {
-        console.log("debug (2)");
         return this.afAuth.authState.pipe(first()).toPromise();
     }
 

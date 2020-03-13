@@ -11,41 +11,15 @@
       <ion-label position="stacked">Title *</ion-label>
       <ion-input [(ngModel)]="title"></ion-input>
     </ion-item>
-    <!-- <span *ngIf="edited_title == false" class="title_span">Title</span> -->
   </div>
 
   <div class="notes_container">
     <ion-item class="notes_item">
       <ion-label position="stacked">Notes * (max 800 words)</ion-label>
-      <ion-textarea [(ngModel)]="notes" placeholder="" maxlength='800'></ion-textarea>
+      <ion-textarea [(ngModel)]="notes" maxlength='800'></ion-textarea>
     </ion-item>
-    <!-- <span *ngIf="edited_notes == false" class="notes_span">notes</span> -->
   </div>
 
-  <!-- <div class="priority_container">
-    <ion-list *ngIf="edited_priority == true" class="priority_item">
-      <ion-item>
-        <ion-label position="stacked">Priority *</ion-label>
-        <ion-select [(ngModel)]="priority">
-          <ion-select-option *ngFor="let priority of priorities" [value]="priority"><span>{{ priority }}</span></ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-list>
-    <span *ngIf="edited_priority == false" class="priority_span">Priority</span>
-  </div> -->
-
-  <!-- <div class="status_container"> 
-    <ion-list *ngIf="edited_status == true" class="status_item">
-      <ion-item>
-        <ion-label position="stacked">Status *</ion-label>
-        <ion-select [(ngModel)]="status">
-          <ion-select-option *ngFor="let status of types_status" [value]="status"><span>{{ status }}</span></ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-list>
-    <span *ngIf="edited_status == false" class="status_span">Status</span>
-  </div> -->
-  
   <ion-button color="light" (click)="editTask()" class="save_btn">
     Save
   </ion-button>
