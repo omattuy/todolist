@@ -17,7 +17,7 @@ export class CreateTaskPage implements OnInit {
   ngOnInit() {}
 
   createTask(): void {
-      this.task.id = 'task-' + this.ev.getTasks().length.toString();
+      //this.task.id = 'task-' + this.ev.getTasks().length.toString();
       this.ev.addTask(this.task);
       this.task = new Task();
   }

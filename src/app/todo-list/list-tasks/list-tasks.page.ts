@@ -64,17 +64,12 @@ export class ListTasksPage implements OnInit {
     }
   }
 
-  async showOptions(ev: any, id) {
-    const popover = await this.popoverController.create({
-      component: ShowOptionsComponent,
-      event: ev,
-      translucent: true,
-      componentProps: {
-        id: id
-      },
-      cssClass: 'pop-over-style'
-    });
-    return await popover.present();
+  changeTaskStatus(id) {
+    for (let i = 0; i < this.tasks.length; i++) {
+      if (id = this.tasks[i].id) {
+        this.ev.editTask(id, undefined, undefined, !this.tasks[i].completed);
+      }
+    }
   }
 
   openTask(id) {
@@ -100,6 +95,19 @@ export class ListTasksPage implements OnInit {
       cssClass: 'task_modal'
     });
     return await modal.present();
+  }
+
+  async showOptions(ev: any, id) {
+    const popover = await this.popoverController.create({
+      component: ShowOptionsComponent,
+      event: ev,
+      translucent: true,
+      componentProps: {
+        id: id
+      },
+      cssClass: 'pop-over-style'
+    });
+    return await popover.present();
   }
 
 }

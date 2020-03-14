@@ -52,7 +52,7 @@ export class EditTaskComponent implements OnInit {
 
   editTask () {
     this.alertMessage('Task successfully edited!');
-    this.ev.editTask(this.id, this.title, this.notes);
+    this.ev.editTask(this.id, this.title, this.notes, undefined);
     this.closeModal();
   }
 
