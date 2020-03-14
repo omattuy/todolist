@@ -1,13 +1,27 @@
 import {Injectable} from '@angular/core';
 import { Task } from '../models/task';
+import 'firebase/firestore';
+import * as firebase from "firebase/app";
 
 @Injectable()
 export class DataTransferService {
 
   task: Task;
   tasks: Task[] = [];
+  db: any;
 
-  constructor() {}
+  constructor() {
+    this.db = firebase.firestore();
+    this.getTasksFromDB();
+  }
+
+  async getTasksFromDB() {
+    await this.db.collection('tasks').get().then((snapshot) =>{
+        snapshot.docs.forEach(doc => {
+            this.tasks.push(doc.data());
+        })
+    });
+  }
 
   public addTask(task: Task):void {
     this.tasks.push(task);
@@ -17,7 +31,7 @@ export class DataTransferService {
     return this.tasks;
   }
 
-  public editTask(id, title, notes/* priority, */ /* status */): void {
+  public editTask(id, title, notes): void {
     for (let i = 0; i < this.tasks.length; i++) {
       if (id == this.tasks[i].id) {
         if (title != undefined) {
@@ -26,12 +40,6 @@ export class DataTransferService {
         if (notes != undefined) {
           this.tasks[i].notes = notes;
         }
-        /* if (priority != undefined) {
-          this.tasks[i].priority = priority;
-        } */
-       /*  if (status != undefined) {
-          this.tasks[i].status = status;
-        } */
       }
     }
   }
