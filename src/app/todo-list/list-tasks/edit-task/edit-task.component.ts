@@ -26,7 +26,7 @@ export class EditTaskComponent implements OnInit {
   loadTask() {
     this.tasks = this.ev.getTasks();
     for (let i = 0; i < this.tasks.length; i++) {
-      if (this.id = this.tasks[i].id) {
+      if (this.id == this.tasks[i].id) {
         this.title = this.tasks[i].title;
         this.notes = this.tasks[i].notes;
       }

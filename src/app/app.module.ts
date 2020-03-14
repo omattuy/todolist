@@ -12,7 +12,6 @@ import { TodoListPageModule } from './todo-list/todo-list.module';
 import { DataTransferService } from './services/DataTransferService';
 import { AuthenticationService } from './services/AuthenticationService';
 import { AuthGuard } from './services/AuthGuard';
-import { CrudService } from './services/CrudService';
 import { PageNotFoundPage } from './page-not-found/page-not-found.page';
 import { ShowOptionsComponent } from './todo-list/list-tasks/show-options/show-options.component';
 import { OpenTaskComponent } from './todo-list/list-tasks/open-task/open-task.component';
@@ -52,8 +51,7 @@ import { environment } from '../environments/environment';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     DataTransferService,
     AuthenticationService,
-    AuthGuard,
-    CrudService
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

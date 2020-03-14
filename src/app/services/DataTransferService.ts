@@ -12,11 +12,10 @@ export class DataTransferService {
 
   constructor() {
     this.db = firebase.firestore();
-    this.getTasksFromDB();
+    this.realTimeListener();
   }
 
   public addTask(task: Task):void {
-    //this.tasks.push(task); // FIXME : Voltar aqui para verificar a necessidade de usar essa linha para mostrar a task no front
     this.db.collection('tasks').add({
       title: task.title,
       notes: task.notes,
@@ -24,47 +23,65 @@ export class DataTransferService {
     })
   }
 
-  async getTasksFromDB() {
-    await this.db.collection('tasks').get().then((snapshot) =>{
-        snapshot.docs.forEach(doc => {
-          this.task = new Task();
-          this.task.id = doc.id;
-          this.task.title = doc.data().title;
-          this.task.notes = doc.data().notes;
-          this.task.completed = doc.data().completed;
-          this.tasks.push(this.task);
-        })
-    });
-  }
-
   public getTasks() {
     return this.tasks;
   }
 
-  // FIXME: Voltar aqui para que o método esteja conectado com a DB
+  public deleteTask(id: string): void {
+    this.db.collection('tasks').doc(id).delete();
+  }
+
   public editTask(id, title?: string, notes?: string, completed?: boolean): void {
     for (let i = 0; i < this.tasks.length; i++) {
       if (id == this.tasks[i].id) {
         if (title != undefined) {
-          this.tasks[i].title = title;
+          this.db.collection('tasks').doc(id).update({
+            title: title
+          })
         }
         if (notes != undefined) {
-          this.tasks[i].notes = notes;
+          this.db.collection('tasks').doc(id).update({
+            notes: notes
+          })
         }
         if (completed != undefined) {
-          this.tasks[i].completed = completed;
+          this.db.collection('tasks').doc(id).update({
+            completed: completed
+          })
         }
       }
     }
   }
 
-  public deleteTask(id: string): void {
-    this.db.collection('tasks').doc(id).delete();
-    /* for (let i = 0; i < this.tasks.length; i++) { // FIXME: Voltar aqui para verificar a necessidade de manter o código abaixo para deletar a tarefa do front
-      if (id == this.tasks[i].id) {
-        this.tasks.splice(i, 1);
-      }
-    } */
+  // Real-time synchronization of the front-end and the database
+  async realTimeListener() {
+    this.db.collection('tasks').onSnapshot(snapshot => {
+      let changes = snapshot.docChanges();
+      changes.forEach(change => {
+        if (change.type == "added") {
+          this.task = new Task();
+          this.task.id = change.doc.id;
+          this.task.title = change.doc.data().title;
+          this.task.notes = change.doc.data().notes;
+          this.task.completed = change.doc.data().completed;
+          this.tasks.push(this.task);
+        } else if (change.type == "removed") {
+          for (let i = 0; i < this.tasks.length; i++) {
+            if (change.doc.id == this.tasks[i].id) {
+              this.tasks.splice(i, 1);
+            }
+          }
+        } else if (change.type == "modified") {
+          for (let i = 0; i < this.tasks.length; i++) {
+            if (change.doc.id == this.tasks[i].id) {
+              this.tasks[i].title = change.doc.data().title;
+              this.tasks[i].notes = change.doc.data().notes;
+              this.tasks[i].completed = change.doc.data().completed;
+            }
+          }
+        }
+      })
+    })
   }
 
 }

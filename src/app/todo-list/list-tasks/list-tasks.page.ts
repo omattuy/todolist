@@ -49,6 +49,7 @@ export class ListTasksPage implements OnInit {
   }
 
   setColorPalette() {
+    console.log('debugggggg', this.tasks.length);
     for (let i = 0; i < this.tasks.length; i++) {
       if (i == 0) {
         this.color_palette[0] = "rgb(87, 198, 218)";
@@ -66,7 +67,7 @@ export class ListTasksPage implements OnInit {
 
   changeTaskStatus(id) {
     for (let i = 0; i < this.tasks.length; i++) {
-      if (id = this.tasks[i].id) {
+      if (id == this.tasks[i].id) {
         this.ev.editTask(id, undefined, undefined, !this.tasks[i].completed);
       }
     }
