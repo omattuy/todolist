@@ -32,8 +32,8 @@ export class LoginLogoutPage implements OnInit {
     this.new_user = false;
   }
 
-  createAccount() {
-    this.authService.createAccount(this.user.email, this.user.password);
+  register() {
+    this.authService.register(this.user.email, this.user.password);
     this.user.email = ''; 
     this.user.password = '';
   }

@@ -49,7 +49,7 @@ export class ListTasksPage implements OnInit {
   }
 
   setColorPalette() {
-    console.log('debugggggg', this.tasks.length);
+    console.log('debug', this.tasks.length);
     for (let i = 0; i < this.tasks.length; i++) {
       if (i == 0) {
         this.color_palette[0] = "rgb(87, 198, 218)";

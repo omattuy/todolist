@@ -10,7 +10,7 @@ export class AuthenticationService {
     constructor(public afAuth: AngularFireAuth, public router: Router) {}
 
     // E-MAIL & PASSWORD AUTHENTICATION
-    async createAccount(email:string, password: string) {
+    async register(email:string, password: string) {
         await this.afAuth.auth.createUserWithEmailAndPassword(email, password)
             .then((user) => {
                 this.router.navigate(["/todo-list"]);
@@ -57,7 +57,7 @@ export class AuthenticationService {
     // FACEBOOK AUTHENTICATION
     FacebookAuth() {
         return this.AuthLoginFacebbok(new auth.FacebookAuthProvider());
-    }  
+    }
 
     AuthLoginFacebbok(provider) {
         return this.afAuth.auth.signInWithPopup(provider)

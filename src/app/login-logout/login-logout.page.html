@@ -3,12 +3,12 @@
   <div class="box">
     <div class="social_accounts">
       <span class="login_with"> Access with </span>
-      <ion-button class="social_account_btn" fill="clear" size="small">
-        <ion-icon src="../assets/facebook.svg" class="facebook_icon" (click)="authService.FacebookAuth()"></ion-icon>
+      <ion-button class="social_account_btn" fill="clear" size="small" (click)="authService.FacebookAuth()">
+        <ion-icon src="../assets/facebook.svg" class="facebook_icon"></ion-icon>
         &nbsp; Facebook
       </ion-button>
-      <ion-button class="social_account_btn" fill="clear" size="small">
-        <ion-icon src="../assets/google.svg" class="google_icon" (click)="authService.GoogleAuth()"></ion-icon>
+      <ion-button class="social_account_btn" fill="clear" size="small" (click)="authService.GoogleAuth()">
+        <ion-icon src="../assets/google.svg" class="google_icon"></ion-icon>
         &nbsp; Google
       </ion-button>
     </div>
@@ -29,7 +29,7 @@
       <div class="wrapper">
         <ion-button class="register_or_login_btn" size="small" (click)="login()">Log In</ion-button>
       </div>
-      <span class="register_or_login" (click)="userIsNew()">Register</span>
+      <span class="register_or_login" (click)="userIsNew()">New user?</span>
     </div>
     <div *ngIf="new_user == true">
       <ion-item>
@@ -45,9 +45,9 @@
         <ion-input type="password" [(ngModel)]="user.password"></ion-input>
       </ion-item>
       <div class="wrapper">
-        <ion-button class="register_or_login_btn" size="small" (click)="createAccount()">Register</ion-button>
+        <ion-button class="register_or_login_btn" size="small" (click)="register()">Register</ion-button>
       </div>
-      <span class="register_or_login" (click)="userIsNotNew()">Log In</span>
+      <span class="register_or_login" (click)="userIsNotNew()">Already have an account?</span>
     </div>
   </div>
 
