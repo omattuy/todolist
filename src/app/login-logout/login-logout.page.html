@@ -1,9 +1,19 @@
 <div class="container">
 
   <div class="box">
+    <div class="social_accounts">
+      <span class="login_with"> Access with </span>
+      <ion-button class="social_account_btn" fill="clear" size="small">
+        <ion-icon src="../assets/facebook.svg" class="facebook_icon" (click)="authService.FacebookAuth()"></ion-icon>
+        &nbsp; Facebook
+      </ion-button>
+      <ion-button class="social_account_btn" fill="clear" size="small">
+        <ion-icon src="../assets/google.svg" class="google_icon" (click)="authService.GoogleAuth()"></ion-icon>
+        &nbsp; Google
+      </ion-button>
+    </div>
+    <div class="or"> Or with e-mail </div>
     <div *ngIf="new_user == false">
-      <h5><strong>LOG IN</strong></h5>
-      (or <span class="register_or_login" (click)="userIsNew()">Register</span>)
       <ion-item>
         <ion-label position="stacked">
           E-mail
@@ -17,14 +27,11 @@
         <ion-input type="password" [(ngModel)]="user.password"></ion-input>
       </ion-item>
       <div class="wrapper">
-        <div class="btn">
-          <ion-button size="small" (click)="login()">Log In</ion-button>
-        </div>
+        <ion-button class="register_or_login_btn" size="small" (click)="login()">Log In</ion-button>
       </div>
+      <span class="register_or_login" (click)="userIsNew()">Register</span>
     </div>
     <div *ngIf="new_user == true">
-      <h5><strong>REGISTRATION</strong></h5>
-      (or <span class="register_or_login" (click)="userIsNotNew()">Log In</span>)
       <ion-item>
         <ion-label position="stacked">
           E-mail
@@ -38,26 +45,9 @@
         <ion-input type="password" [(ngModel)]="user.password"></ion-input>
       </ion-item>
       <div class="wrapper">
-        <div class="btn">
-          <ion-button size="small" (click)="createAccount()">Register</ion-button>
-        </div>
+        <ion-button class="register_or_login_btn" size="small" (click)="createAccount()">Register</ion-button>
       </div>
-    </div>
-    <hr>
-    Log in or Register with your social account:
-    <div class="social_accounts">
-      <div class="facebook">
-        <button class="loginBtn loginBtn--facebook" (click)="authService.FacebookAuth()">
-          Log In with Facebook
-        </button>
-        <!-- <ion-icon class="facebook_icon" name="logo-facebook" (click)="authService.FacebookAuth()"></ion-icon> -->
-      </div>
-      <div class="google">
-        <button class="loginBtn loginBtn--google" (click)="authService.GoogleAuth()">
-          Log In with Google
-        </button>
-        <!-- <ion-icon class="google_icon" name="logo-google" (click)="authService.GoogleAuth()"></ion-icon> -->
-      </div>
+      <span class="register_or_login" (click)="userIsNotNew()">Log In</span>
     </div>
   </div>
 
