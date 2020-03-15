@@ -30,7 +30,7 @@
     margin-bottom: 30px;
 }
 
-.login_with {
+.access_with {
     display: block;
     margin-bottom: 20px;
 }
@@ -48,6 +48,10 @@
 
 .facebook_icon {
     font-size: 1.5em;
+}
+
+.login_with_email_wrapper {
+    margin-top: 20px;
 }
 
 .register_or_login_btn {
@@ -71,11 +75,6 @@
     width: 100%;
     display: block;
 }
-
-/* .btn {
-    display : block;
-    margin-top: 20px;
-} */
 
 .or {
     display:flex;

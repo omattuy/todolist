@@ -2,7 +2,7 @@
 
   <div class="box">
     <div class="social_accounts">
-      <span class="login_with"> Access with </span>
+      <span class="access_with"> Access with </span>
       <ion-button class="social_account_btn" fill="clear" size="small" (click)="authService.FacebookAuth()">
         <ion-icon src="../assets/facebook.svg" class="facebook_icon"></ion-icon>
         &nbsp; Facebook
@@ -13,7 +13,7 @@
       </ion-button>
     </div>
     <div class="or"> Or with e-mail </div>
-    <div *ngIf="new_user == false">
+    <div class="login_with_email_wrapper">
       <ion-item>
         <ion-label position="stacked">
           E-mail
@@ -26,28 +26,18 @@
         </ion-label>
         <ion-input type="password" [(ngModel)]="user.password"></ion-input>
       </ion-item>
-      <div class="wrapper">
-        <ion-button class="register_or_login_btn" size="small" (click)="login()">Log In</ion-button>
+      <div *ngIf="new_user == false">
+        <div class="wrapper">
+          <ion-button class="register_or_login_btn" size="small" (click)="login()">Log In</ion-button>
+        </div>
+        <span class="register_or_login" (click)="userIsNew()">New user?</span>
       </div>
-      <span class="register_or_login" (click)="userIsNew()">New user?</span>
-    </div>
-    <div *ngIf="new_user == true">
-      <ion-item>
-        <ion-label position="stacked">
-          E-mail
-        </ion-label>
-        <ion-input [(ngModel)]="user.email"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">
-          Password
-        </ion-label>
-        <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-      </ion-item>
-      <div class="wrapper">
-        <ion-button class="register_or_login_btn" size="small" (click)="register()">Register</ion-button>
+      <div *ngIf="new_user == true">
+        <div class="wrapper">
+          <ion-button class="register_or_login_btn" size="small" (click)="register()">Register</ion-button>
+        </div>
+        <span class="register_or_login" (click)="userIsNotNew()">Already have an account?</span>
       </div>
-      <span class="register_or_login" (click)="userIsNotNew()">Already have an account?</span>
     </div>
   </div>
 
