@@ -18,7 +18,7 @@ export class TodoListPage implements OnInit {
   reportTasks_isActive: boolean;
   pomodoro_isActive: boolean;
 
-  constructor(private ev: DataTransferService,
+  constructor(public crud: DataTransferService,
               public popoverController: PopoverController,
               private router: Router) {
 
@@ -29,7 +29,7 @@ export class TodoListPage implements OnInit {
 
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
-        this.tasks = this.ev.getTasks();
+        //this.tasks = this.ev.getTasks();
         if (e.url == "/todo-list/create-task") {
           this.createTask_isActive = true;
           this.listTasks_isActive = false;

@@ -15,23 +15,21 @@ import { OpenTaskComponent } from '../list-tasks/open-task/open-task.component';
 
 export class ListTasksPage implements OnInit {
 
-  tasks: Task[] = [];
+  //tasks: Task[] = [];
   id: string;
   title: string;
   notes: string;
   completed: boolean;
-
   task_idx:number;
   color_palette: Array<string> = [];
 
-  constructor(private ev: DataTransferService,
+  constructor(private crud: DataTransferService,
               private router: Router,
               public modalController: ModalController,
               public popoverController: PopoverController) {
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
         if (e.url == "/todo-list") {
-          this.loadTaskLists();
           this.setColorPalette();
         }
       }
@@ -40,16 +38,13 @@ export class ListTasksPage implements OnInit {
 
   ngOnInit() { }
 
-  loadTaskLists() {
-      this.tasks = this.ev.getTasks();
-  }
-
   doReorder(ev: any) { /* Allows the list of tasks to be reordered */
-    ev.detail.complete(this.tasks);
+    ev.detail.complete(this.crud.tasks);
   }
 
   setColorPalette() {
-    for (let i = 0; i < this.tasks.length; i++) {
+    console.log('TASKS LENGTH: ', this.crud.tasks.length);
+    for (let i = 0; i < this.crud.tasks.length; i++) {
       if (i == 0) {
         this.color_palette[0] = "rgb(87, 198, 218)";
       } else {
@@ -65,9 +60,9 @@ export class ListTasksPage implements OnInit {
   }
 
   changeTaskStatus(id) {
-    for (let i = 0; i < this.tasks.length; i++) {
-      if (id == this.tasks[i].id) {
-        this.ev.editTask(id, undefined, undefined, !this.tasks[i].completed);
+    for (let i = 0; i < this.crud.tasks.length; i++) {
+      if (id == this.crud.tasks[i].id) {
+        this.crud.editTask(id, undefined, undefined, !this.crud.tasks[i].completed); // FIXME: É necessário enviar o UID do user?
       }
     }
   }
@@ -78,11 +73,11 @@ export class ListTasksPage implements OnInit {
   }
 
   async openModal(id) {
-    for (let i = 0; i < this.tasks.length; i++) {
-      if (id == this.tasks[i].id) {
-        this.title = this.tasks[i].title;
-        this.notes = this.tasks[i].notes;
-        this.completed = this.tasks[i].completed;
+    for (let i = 0; i < this.crud.tasks.length; i++) {
+      if (id == this.crud.tasks[i].id) {
+        this.title = this.crud.tasks[i].title;
+        this.notes = this.crud.tasks[i].notes;
+        this.completed = this.crud.tasks[i].completed;
       }
     }
     const modal = await this.modalController.create({

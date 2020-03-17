@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { AuthenticationService } from '../services/AuthenticationService';
+import { DataTransferService } from '../services/DataTransferService';
 
 @Component({
   selector: 'app-login-logout',
@@ -13,23 +14,18 @@ export class LoginLogoutPage implements OnInit {
   user: User = {email: "", password: ""};
   new_user: boolean;
 
-  constructor (public authService: AuthenticationService, public router: Router) {
-    /* if (this.authService.isLoggedIn()) {
-      this.router.navigate(["/todo-list"]);
-    }
-     */
+  constructor (public authService: AuthenticationService, public crud: DataTransferService, public router: Router) {
     this.authService.isLoggedIn().subscribe(user => {
       if (user) {
         this.router.navigate(["/todo-list"]);
       } else {
+        this.crud.clearDataOnLogOut();
         this.new_user = true;
       }
     })
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   userIsNew() {
     this.new_user = true;

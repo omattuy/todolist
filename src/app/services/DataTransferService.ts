@@ -3,6 +3,7 @@ import { Task } from '../models/task';
 import { AuthenticationService } from './AuthenticationService';
 import 'firebase/firestore';
 import * as firebase from "firebase/app";
+import { from, Observable } from 'rxjs';
 
 @Injectable()
 export class DataTransferService {
@@ -15,12 +16,6 @@ export class DataTransferService {
   constructor(public authService: AuthenticationService) {
     this.setUpUserData();
     this.db = firebase.firestore();
-    this.authService.isLoggedIn().subscribe(user => {
-      if (user) {
-      } else {
-        this.tasks = [];
-      }
-    })
   }
 
   setUpUserData() {
@@ -28,6 +23,20 @@ export class DataTransferService {
       if (user) {
         this.userId = user.uid;
         this.realTimeCUD();
+      }
+    })
+  }
+
+  public getTasks() {
+    return this.tasks;
+  }
+
+  clearDataOnLogOut() {
+    this.authService.isLoggedIn().subscribe(user => {
+      if (user) {
+        console.log('User logged in!');
+      } else {
+        this.tasks = [];
       }
     })
   }
@@ -41,10 +50,6 @@ export class DataTransferService {
     })
   }
 
-  public getTasks() {
-    return this.tasks;
-  }
-
   public deleteTask(id: string): void {
     this.db.collection('tasks').doc(id).delete().then(function() {
         console.log("Document successfully deleted!");
@@ -53,7 +58,7 @@ export class DataTransferService {
     });
   }
 
-  public editTask(id, title?: string, notes?: string, completed?: boolean): void {
+  public editTask(id, title?: string, notes?: string, completed?: boolean): void { // FIXME: É necessário enviar o UID do user?
     for (let i = 0; i < this.tasks.length; i++) {
       if (id == this.tasks[i].id) {
         if (title != undefined) {
@@ -77,7 +82,6 @@ export class DataTransferService {
 
   // Real-time synchronization of the front-end and the database (CUD: Create, Update and Delete)
   async realTimeCUD() {
-    console.log('listener(user.id): ', this.userId);
     this.db.collection('tasks').where('userId', '==', this.userId).onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
       changes.forEach(change => {

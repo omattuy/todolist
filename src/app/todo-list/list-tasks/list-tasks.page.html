@@ -1,8 +1,8 @@
 <div class="container">
 
-  <div class="container-list" *ngIf="tasks.length > 0">
+  <div class="container-list" *ngIf="crud.tasks.length > 0">
       <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
-        <div *ngFor="let task of tasks; index as task_idx" [ngStyle]="{'background-color' : color_palette[task_idx]}" class="task" lines="none">
+        <div *ngFor="let task of crud.tasks; index as task_idx" [ngStyle]="{'background-color' : color_palette[task_idx]}" class="task" lines="none">
           <ion-reorder class="reordering_icon" slot="start"></ion-reorder>
           <ion-checkbox class="checkbox" (click)="changeTaskStatus(task.id)"></ion-checkbox>
           <div class="title_btn" (click)="openModal(task.id)">
@@ -13,7 +13,7 @@
       </ion-reorder-group>
   </div>
 
-  <div *ngIf="tasks.length == 0" class="noTasks">
+  <div *ngIf="crud.tasks.length == 0" class="noTasks">
     <p><strong>Your task box is empty.</strong></p>
     <img id="empty_list" src="../../assets/empty-list.svg"/>
   </div>
