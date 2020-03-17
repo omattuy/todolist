@@ -3,11 +3,15 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from "firebase/app";
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+//import { DataTransferService } from './DataTransferService';
 
 @Injectable()
 export class AuthenticationService {
 
-    constructor(public afAuth: AngularFireAuth, public router: Router) {}
+    userId: string;
+
+    constructor(public afAuth: AngularFireAuth, /* public crud: DataTransferService, */ public router: Router) { }
 
     // E-MAIL & PASSWORD AUTHENTICATION
     async register(email:string, password: string) {
@@ -50,8 +54,8 @@ export class AuthenticationService {
         await this.afAuth.auth.signOut();
     }
 
-    isLoggedIn() {
-        return this.afAuth.authState.pipe(first()).toPromise();
+    isLoggedIn(): Observable<any> {
+        return this.afAuth.authState;
     }
 
     // FACEBOOK AUTHENTICATION
@@ -69,19 +73,19 @@ export class AuthenticationService {
         })
     }
 
-// GOOGLE AUTHENTICATION
-  GoogleAuth() {
-    return this.AuthLoginGoogle(new auth.GoogleAuthProvider());
-  }  
+    // GOOGLE AUTHENTICATION
+    GoogleAuth() {
+        return this.AuthLoginGoogle(new auth.GoogleAuthProvider());
+    }
 
-  AuthLoginGoogle(provider) {
-    return this.afAuth.auth.signInWithPopup(provider)
-    .then((result) => {
-        this.router.navigate(["/todo-list"]);
-        console.log('You have been successfully logged in!')
-    }).catch((error) => {
-        console.log(error)
-    })
-  }
+    AuthLoginGoogle(provider) {
+        return this.afAuth.auth.signInWithPopup(provider)
+        .then((result) => {
+            this.router.navigate(["/todo-list"]);
+            console.log('You have been successfully logged in!')
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
 
 }

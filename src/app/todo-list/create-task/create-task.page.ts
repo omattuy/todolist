@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { AuthenticationService } from '../../services/AuthenticationService';
 import { DataTransferService } from '../../services/DataTransferService';
 import { Task } from '../../models/task';
 
@@ -11,15 +12,26 @@ import { Task } from '../../models/task';
 export class CreateTaskPage implements OnInit {
 
   task = new Task();
+  userId: string;
 
-  constructor(private ev: DataTransferService, public toastController: ToastController) { }
+  constructor(public authService: AuthenticationService, private ev: DataTransferService, public toastController: ToastController) {
+    this.getter();  
+  }
+
+  getter() {
+    this.authService.isLoggedIn().subscribe(user => {
+        this.userId = user.uid;
+    })
+  }
 
   ngOnInit() {}
 
   createTask(): void {
-      //this.task.id = 'task-' + this.ev.getTasks().length.toString();
-      this.ev.addTask(this.task);
-      this.task = new Task();
+    //console.log('Create1: ', this.userId);
+    this.task.userId = this.userId;
+    //console.log("Create2: ", this.task.userId);
+    this.ev.addTask(this.task);
+    this.task = new Task();
   }
 
   async createNewTask() {

@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import { Task } from '../models/task';
+import { AuthenticationService } from './AuthenticationService';
 import 'firebase/firestore';
 import * as firebase from "firebase/app";
 
@@ -9,14 +10,31 @@ export class DataTransferService {
   task: Task;
   tasks: Task[] = [];
   db: any;
+  userId: string;
 
-  constructor() {
+  constructor(public authService: AuthenticationService) {
+    this.setUpUserData();
     this.db = firebase.firestore();
-    this.realTimeListener();
+    this.authService.isLoggedIn().subscribe(user => {
+      if (user) {
+      } else {
+        this.tasks = [];
+      }
+    })
+  }
+
+  setUpUserData() {
+    this.authService.isLoggedIn().subscribe(user => {
+      if (user) {
+        this.userId = user.uid;
+        this.realTimeCUD();
+      }
+    })
   }
 
   public addTask(task: Task):void {
     this.db.collection('tasks').add({
+      userId: task.userId,
       title: task.title,
       notes: task.notes,
       completed: task.completed
@@ -28,7 +46,11 @@ export class DataTransferService {
   }
 
   public deleteTask(id: string): void {
-    this.db.collection('tasks').doc(id).delete();
+    this.db.collection('tasks').doc(id).delete().then(function() {
+        console.log("Document successfully deleted!");
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
   }
 
   public editTask(id, title?: string, notes?: string, completed?: boolean): void {
@@ -53,14 +75,16 @@ export class DataTransferService {
     }
   }
 
-  // Real-time synchronization of the front-end and the database
-  async realTimeListener() {
-    this.db.collection('tasks').onSnapshot(snapshot => {
+  // Real-time synchronization of the front-end and the database (CUD: Create, Update and Delete)
+  async realTimeCUD() {
+    console.log('listener(user.id): ', this.userId);
+    this.db.collection('tasks').where('userId', '==', this.userId).onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
       changes.forEach(change => {
         if (change.type == "added") {
           this.task = new Task();
           this.task.id = change.doc.id;
+          this.task.userId =  change.doc.data().userId;
           this.task.title = change.doc.data().title;
           this.task.notes = change.doc.data().notes;
           this.task.completed = change.doc.data().completed;

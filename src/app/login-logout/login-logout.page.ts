@@ -14,10 +14,17 @@ export class LoginLogoutPage implements OnInit {
   new_user: boolean;
 
   constructor (public authService: AuthenticationService, public router: Router) {
-    if (this.authService.isLoggedIn()) {
+    /* if (this.authService.isLoggedIn()) {
       this.router.navigate(["/todo-list"]);
     }
-    this.new_user = true;
+     */
+    this.authService.isLoggedIn().subscribe(user => {
+      if (user) {
+        this.router.navigate(["/todo-list"]);
+      } else {
+        this.new_user = true;
+      }
+    })
   }
 
   ngOnInit() {
