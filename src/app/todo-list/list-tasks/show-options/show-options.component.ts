@@ -16,7 +16,7 @@ export class ShowOptionsComponent implements OnInit {
   tasks: Task[] = [];
   id: string;
 
-  constructor(private ev: DataTransferService,
+  constructor(private crud: DataTransferService,
               private alertCtrl: AlertController,
               public modalController: ModalController,
               public popoverController: PopoverController) { }
@@ -24,7 +24,7 @@ export class ShowOptionsComponent implements OnInit {
   ngOnInit() {}
 
   ngDoCheck() {
-    this.tasks = this.ev.getTasks();
+    this.tasks = this.crud.getTasks();
   }
 
   async dismissPopOver() {
@@ -49,7 +49,7 @@ export class ShowOptionsComponent implements OnInit {
   }
 
   deleteTask(id) {
-    this.ev.deleteTask(id);
+    this.crud.deleteTask(id);
   }
 
   async deleteTaskAlert(id) {

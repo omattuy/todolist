@@ -2,16 +2,15 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from "firebase/app";
 import { Router } from '@angular/router';
-import { first } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-//import { DataTransferService } from './DataTransferService';
+import { first } from 'rxjs/operators';
 
 @Injectable()
 export class AuthenticationService {
 
     userId: string;
 
-    constructor(public afAuth: AngularFireAuth, /* public crud: DataTransferService, */ public router: Router) { }
+    constructor(public afAuth: AngularFireAuth, public router: Router) { }
 
     // E-MAIL & PASSWORD AUTHENTICATION
     async register(email:string, password: string) {
@@ -56,6 +55,10 @@ export class AuthenticationService {
 
     isLoggedIn(): Observable<any> {
         return this.afAuth.authState;
+    }
+
+    getUser(): Promise<any> {
+        return this.afAuth.authState.pipe(first()).toPromise();
     }
 
     // FACEBOOK AUTHENTICATION

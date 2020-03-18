@@ -8,7 +8,7 @@
           <div class="title_btn" (click)="openModal(task.id)">
             <div [ngClass]="{'completed_task' : task.completed == true, 'incompleted_task' : task.completed == false}">{{ task.title }}</div>
           </div>
-          <ion-icon (click)="showOptions($event, task.id)" class="options_icon" name="ellipsis-vertical"></ion-icon>
+          <ion-icon (click)="showOptions($event, crud.tasks.id)" class="options_icon" name="ellipsis-vertical"></ion-icon>
         </div>
       </ion-reorder-group>
   </div>

@@ -3,7 +3,6 @@ import { Task } from '../models/task';
 import { AuthenticationService } from './AuthenticationService';
 import 'firebase/firestore';
 import * as firebase from "firebase/app";
-import { from, Observable } from 'rxjs';
 
 @Injectable()
 export class DataTransferService {
@@ -14,16 +13,51 @@ export class DataTransferService {
   userId: string;
 
   constructor(public authService: AuthenticationService) {
-    this.setUpUserData();
     this.db = firebase.firestore();
+    this.setUpTasksRealTime();
+
   }
 
-  setUpUserData() {
-    this.authService.isLoggedIn().subscribe(user => {
-      if (user) {
-        this.userId = user.uid;
-        this.realTimeCUD();
-      }
+  setUpTasksRealTime() {
+    this.authService.getUser().
+    then(user => {
+      this.userId = user.uid;
+    }).
+    then(user => {
+      this.realTimeCUD();
+    })
+  }
+
+  // Real-time front-end and database synchronization (Only CUD operations: Create, Update and Delete)
+  realTimeCUD() {
+    this.db.collection('tasks').where('userId', '==', this.userId)
+      .onSnapshot(snapshot => {
+      this.tasks = [];
+      snapshot.docChanges().forEach(change => {
+        if (change.type == "added") {
+          this.task = new Task();
+          this.task.id = change.doc.id;
+          this.task.userId =  change.doc.data().userId;
+          this.task.title = change.doc.data().title;
+          this.task.notes = change.doc.data().notes;
+          this.task.completed = change.doc.data().completed;
+          this.tasks.push(this.task);
+        } else if (change.type == "removed") {
+          for (let i = 0; i < this.tasks.length; i++) {
+            if (change.doc.id == this.tasks[i].id) {
+              this.tasks.splice(i, 1);
+            }
+          }
+        } else if (change.type == "modified") {
+          for (let i = 0; i < this.tasks.length; i++) {
+            if (change.doc.id == this.tasks[i].id) {
+              this.tasks[i].title = change.doc.data().title;
+              this.tasks[i].notes = change.doc.data().notes;
+              this.tasks[i].completed = change.doc.data().completed;
+            }
+          }
+        }
+      })
     })
   }
 
@@ -78,38 +112,6 @@ export class DataTransferService {
         }
       }
     }
-  }
-
-  // Real-time synchronization of the front-end and the database (CUD: Create, Update and Delete)
-  async realTimeCUD() {
-    this.db.collection('tasks').where('userId', '==', this.userId).onSnapshot(snapshot => {
-      let changes = snapshot.docChanges();
-      changes.forEach(change => {
-        if (change.type == "added") {
-          this.task = new Task();
-          this.task.id = change.doc.id;
-          this.task.userId =  change.doc.data().userId;
-          this.task.title = change.doc.data().title;
-          this.task.notes = change.doc.data().notes;
-          this.task.completed = change.doc.data().completed;
-          this.tasks.push(this.task);
-        } else if (change.type == "removed") {
-          for (let i = 0; i < this.tasks.length; i++) {
-            if (change.doc.id == this.tasks[i].id) {
-              this.tasks.splice(i, 1);
-            }
-          }
-        } else if (change.type == "modified") {
-          for (let i = 0; i < this.tasks.length; i++) {
-            if (change.doc.id == this.tasks[i].id) {
-              this.tasks[i].title = change.doc.data().title;
-              this.tasks[i].notes = change.doc.data().notes;
-              this.tasks[i].completed = change.doc.data().completed;
-            }
-          }
-        }
-      })
-    })
   }
 
 }

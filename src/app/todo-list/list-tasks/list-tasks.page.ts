@@ -15,7 +15,6 @@ import { OpenTaskComponent } from '../list-tasks/open-task/open-task.component';
 
 export class ListTasksPage implements OnInit {
 
-  //tasks: Task[] = [];
   id: string;
   title: string;
   notes: string;
@@ -39,12 +38,12 @@ export class ListTasksPage implements OnInit {
   ngOnInit() { }
 
   doReorder(ev: any) { /* Allows the list of tasks to be reordered */
-    ev.detail.complete(this.crud.tasks);
+    ev.detail.complete(this.crud.getTasks());
   }
 
   setColorPalette() {
-    console.log('TASKS LENGTH: ', this.crud.tasks.length);
-    for (let i = 0; i < this.crud.tasks.length; i++) {
+    console.log('TASKS LENGTH (list-tasks): ', this.crud.getTasks().length);
+    for (let i = 0; i < this.crud.getTasks().length; i++) {
       if (i == 0) {
         this.color_palette[0] = "rgb(87, 198, 218)";
       } else {
@@ -60,9 +59,9 @@ export class ListTasksPage implements OnInit {
   }
 
   changeTaskStatus(id) {
-    for (let i = 0; i < this.crud.tasks.length; i++) {
-      if (id == this.crud.tasks[i].id) {
-        this.crud.editTask(id, undefined, undefined, !this.crud.tasks[i].completed); // FIXME: É necessário enviar o UID do user?
+    for (let i = 0; i < this.crud.getTasks().length; i++) {
+      if (id == this.crud.getTasks()[i].id) {
+        this.crud.editTask(id, undefined, undefined, !this.crud.getTasks()[i].completed); // FIXME: É necessário enviar o UID do user?
       }
     }
   }
@@ -73,11 +72,11 @@ export class ListTasksPage implements OnInit {
   }
 
   async openModal(id) {
-    for (let i = 0; i < this.crud.tasks.length; i++) {
-      if (id == this.crud.tasks[i].id) {
-        this.title = this.crud.tasks[i].title;
-        this.notes = this.crud.tasks[i].notes;
-        this.completed = this.crud.tasks[i].completed;
+    for (let i = 0; i < this.crud.getTasks().length; i++) {
+      if (id == this.crud.getTasks()[i].id) {
+        this.title = this.crud.getTasks()[i].title;
+        this.notes = this.crud.getTasks()[i].notes;
+        this.completed = this.crud.getTasks()[i].completed;
       }
     }
     const modal = await this.modalController.create({
